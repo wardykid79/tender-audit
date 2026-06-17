@@ -855,6 +855,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         </div>
 
         <button class="btn btn-primary btn-lg btn-block" id="runChecker">Generate Free Bid/No-Bid Score</button>
+        <p id="checkMsg" style="display:none;margin:10px 2px 0;font-size:.92rem;font-weight:600;text-align:center"></p>
 
         <p class="privacy-min">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -1491,6 +1492,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script>
+try { if (window.pdfjsLib) { window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'; } } catch(e){}
+</script>
 <script>
 /* ---------- Year ---------- */
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -1578,25 +1584,57 @@ window.addEventListener('load', () => {
 /* ---------- Free checker: generate sample score ---------- */
 /* ---------- File upload (picker + drag/drop) ---------- */
 let uploadedFileName = '';
+let extractedFileText = '';
 const uploadBox = document.getElementById('uploadBox');
 const fileInput = document.getElementById('fileInput');
 const uploadTitle = document.getElementById('uploadTitle');
 const uploadHint = document.getElementById('uploadHint');
 
-function showFile(file){
+async function extractText(file){
+  const name = (file.name||'').toLowerCase();
+  try{
+    if(name.endsWith('.pdf') && window.pdfjsLib){
+      const buf = await file.arrayBuffer();
+      const pdf = await window.pdfjsLib.getDocument({data:buf}).promise;
+      const maxPages = Math.min(pdf.numPages, 30);
+      let out = '';
+      for(let p=1; p<=maxPages; p++){
+        const page = await pdf.getPage(p);
+        const content = await page.getTextContent();
+        out += content.items.map(function(i){ return i.str; }).join(' ') + '\n';
+      }
+      return out.trim();
+    }
+    if((name.endsWith('.docx')) && window.mammoth){
+      const buf = await file.arrayBuffer();
+      const res = await window.mammoth.extractRawText({arrayBuffer:buf});
+      return (res && res.value ? res.value : '').trim();
+    }
+  }catch(e){ /* extraction failed — handled by caller */ }
+  return '';
+}
+
+async function showFile(file){
   if(!file) return;
   const MAX = 25 * 1024 * 1024; // 25MB
   if(file.size > MAX){
     uploadBox.classList.remove('has-file');
     uploadTitle.textContent = 'File too large';
     uploadHint.textContent = 'Please choose a PDF or Word file under 25MB.';
-    uploadedFileName = '';
+    uploadedFileName = ''; extractedFileText = '';
     return;
   }
   uploadedFileName = file.name;
+  extractedFileText = '';
   uploadBox.classList.add('has-file');
   uploadTitle.textContent = '✓ ' + file.name;
-  uploadHint.textContent = 'Ready — tap "Generate Free Bid/No-Bid Score" below.';
+  uploadHint.textContent = 'Reading document…';
+  extractedFileText = await extractText(file);
+  if(extractedFileText.length >= 40){
+    uploadHint.textContent = 'Ready — tap "Generate Free Bid/No-Bid Score" below.';
+  } else {
+    uploadHint.textContent = "Couldn't read enough text from this file (it may be scanned). Please paste the notice text above instead.";
+  }
 }
 
 uploadBox.addEventListener('click', () => fileInput.click());
@@ -1733,41 +1771,55 @@ function renderSample(){
 }
 
 runBtn.addEventListener('click', async function(){
-  const tender=(document.getElementById('fText').value||'').trim();
+  const pasted=(document.getElementById('fText').value||'').trim();
+  const fileText=(extractedFileText||'').trim();
+  const tender = pasted.length>=40 ? pasted : (fileText.length>=40 ? fileText : '');
+  const msgEl=document.getElementById('checkMsg');
+  function say(text,color){ msgEl.style.display='block'; msgEl.style.color=color; msgEl.textContent=text; }
+  msgEl.style.display='none';
+
+  // Block empty / insufficient input — no fake sample
+  if(!tender){
+    if(uploadedFileName && fileText.length<40){
+      say("We couldn't read enough text from your file — please paste the tender notice text in the box above.", 'var(--nobid, #b4232a)');
+    } else {
+      say('Please paste the tender notice text, or upload the tender document, before generating your score.', 'var(--nobid, #b4232a)');
+    }
+    document.getElementById('fText').scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
   const original=runBtn.textContent;
   runBtn.disabled=true; runBtn.textContent='Analysing tender…';
   let usedReal=false;
 
-  if(tender.length>=40){
-    try{
-      const resp=await fetch('/api/audit',{
-        method:'POST',
-        headers:{'content-type':'application/json'},
-        body:JSON.stringify({
-          tender: tender,
-          region: region,
-          sector: document.getElementById('fSector').value,
-          turnover: document.getElementById('fTurnover').value,
-          insurance: document.getElementById('fInsurance').value,
-          years: document.getElementById('fYears').value,
-          experience: document.getElementById('fExp').value,
-          deadline: document.getElementById('fDeadline').value
-        })
-      });
-      if(resp.ok){
-        const audit=await resp.json();
-        if(audit && audit.verdict){
-          renderReal(audit);
-          usedReal=true;
-          showLead({ engine:'AI', verdict:audit.verdict, score:audit.score });
-        }
+  try{
+    const resp=await fetch('/api/audit',{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({
+        tender: tender,
+        region: region,
+        sector: document.getElementById('fSector').value,
+        turnover: document.getElementById('fTurnover').value,
+        insurance: document.getElementById('fInsurance').value,
+        years: document.getElementById('fYears').value,
+        experience: document.getElementById('fExp').value,
+        deadline: document.getElementById('fDeadline').value
+      })
+    });
+    if(resp.ok){
+      const audit=await resp.json();
+      if(audit && audit.verdict){
+        renderReal(audit);
+        usedReal=true;
+        showLead({ engine:'AI', verdict:audit.verdict, score:audit.score });
       }
-    }catch(e){ /* fall back to sample below */ }
-  }
+    }
+  }catch(e){ /* handled below */ }
 
   if(!usedReal){
-    const s=renderSample();
-    showLead({ engine:'sample', sampleVerdict:s.verdict, sampleScore:s.score });
+    say('Something went wrong analysing your tender. Please try again in a moment.', 'var(--nobid, #b4232a)');
   }
 
   runBtn.disabled=false; runBtn.textContent=original;
