@@ -308,6 +308,20 @@ header.nav{
 .live-result.show{display:block}
 .lr-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:640px){.lr-grid{grid-template-columns:1fr}}
+.free-finding{background:var(--teal-soft);border:1px solid var(--teal);border-radius:var(--r);padding:14px 16px;margin-bottom:14px}
+.ff-label{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:4px}
+.free-finding p{font-size:.95rem;color:var(--charcoal)}
+.teaser-counts{font-size:.95rem;color:var(--charcoal);line-height:1.55}
+.locked-wrap{position:relative;margin-top:20px}
+.locked-content{transition:filter .2s}
+.locked-wrap.is-locked .locked-content{filter:blur(6px);opacity:.5;pointer-events:none;user-select:none;max-height:380px;overflow:hidden}
+.lock-overlay{display:none}
+.locked-wrap.is-locked .lock-overlay{display:flex;position:absolute;inset:0;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:24px;border-radius:var(--r);background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.78) 42%,rgba(255,255,255,.96) 100%)}
+.lock-badge{width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center}
+.lock-badge svg{width:22px;height:22px}
+.lock-title{font-weight:800;font-size:1.15rem;color:var(--navy);line-height:1.2}
+.lock-sub{font-size:.9rem;color:var(--slate);max-width:430px;line-height:1.45}
+.lock-alt{font-size:.85rem;color:var(--teal);font-weight:600;text-decoration:none}
 @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .lr-top{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
 .lr-gauge{width:110px;height:110px;position:relative;flex:none}
@@ -858,7 +872,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
               <div class="n" id="lrNum">0</div>
             </div>
             <div class="lr-verdict">
-              <div class="eyebrow">Your sample audit · <span id="lrRegion">Ireland</span></div>
+              <div class="eyebrow"><span id="lrKind">Your sample audit</span> · <span id="lrRegion">Ireland</span></div>
               <h4 id="lrTitle">Maybe Bid</h4>
               <span class="badge maybe" id="lrBadge">Worth a closer look</span>
               <p id="lrMsg">Promising fit, but a few gaps need closing before the deadline.</p>
@@ -866,25 +880,44 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           </div>
           <p id="lrSampleNote" style="margin-top:18px;font-size:.9rem;color:var(--slate)">This is a sample of what the free checker returns. The full Tender Readiness Report breaks down every document, insurance level and scoring criterion in detail.</p>
 
-          <div id="lrReal" style="display:none;margin-top:20px">
-            <table class="rtable" style="margin-bottom:20px">
-              <thead><tr><th>Area</th><th>Assessment</th><th style="text-align:right">Rating</th></tr></thead>
-              <tbody id="lrBreakdown"></tbody>
-            </table>
-            <div class="lr-grid">
-              <div class="risks">
-                <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Documents you'll need</h4>
-                <ul id="lrDocs"></ul>
-              </div>
-              <div class="risks">
-                <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Top risks to watch</h4>
-                <ul id="lrRisks"></ul>
-              </div>
+          <!-- FREE teaser: one genuine finding + counts of what's locked -->
+          <div id="lrTeaser" style="display:none;margin-top:20px">
+            <div class="free-finding">
+              <div class="ff-label">Free finding · Deadline</div>
+              <p id="lrFreeFinding">—</p>
             </div>
-            <p style="margin-top:18px;font-size:.92rem;color:var(--charcoal)"><b>Estimated effort:</b> <span id="lrEffort">—</span> &nbsp;&middot;&nbsp; <span id="lrRec"></span></p>
+            <p class="teaser-counts">We identified <b><span id="lrDocCount">0</span> required document(s)</b> and <b><span id="lrRiskCount">0</span> risk(s)</b> in this tender, plus a full 7-point readiness breakdown. Unlock the report to see exactly what they are — and how to close them before the deadline.</p>
           </div>
 
-          <a href="#pricing" class="btn btn-dark" style="margin-top:14px">Unlock Full Tender Readiness Report</a>
+          <!-- LOCKED paid detail: rendered but blurred until purchased -->
+          <div id="lrLocked" class="locked-wrap" style="display:none">
+            <div class="locked-content">
+              <table class="rtable" style="margin-bottom:20px">
+                <thead><tr><th>Area</th><th>Assessment</th><th style="text-align:right">Rating</th></tr></thead>
+                <tbody id="lrBreakdown"></tbody>
+              </table>
+              <div class="lr-grid">
+                <div class="risks">
+                  <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Documents you'll need</h4>
+                  <ul id="lrDocs"></ul>
+                </div>
+                <div class="risks">
+                  <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Top risks to watch</h4>
+                  <ul id="lrRisks"></ul>
+                </div>
+              </div>
+              <p style="margin-top:18px;font-size:.92rem;color:var(--charcoal)"><b>Estimated effort:</b> <span id="lrEffort">—</span> &middot; <span id="lrRec"></span></p>
+            </div>
+            <div class="lock-overlay">
+              <div class="lock-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+              <div class="lock-title">Unlock your full Tender Readiness Report</div>
+              <div class="lock-sub">See every required document, all flagged risks, the full 7-point scoring breakdown and your recommended next steps.</div>
+              <a href="#pricing" class="btn btn-primary" style="margin-top:4px">Unlock Full Report — €49 / £49</a>
+              <a href="#pricing" class="lock-alt">Or have a real EA contractor review it for you &rarr;</a>
+            </div>
+          </div>
+
+          <a id="lrSampleCta" href="#pricing" class="btn btn-dark" style="margin-top:14px;display:none">Unlock Full Tender Readiness Report</a>
         </div>
       </div>
     </div>
@@ -1631,8 +1664,20 @@ function renderReal(a){
   const badgeText = score>=70?'Strong fit':score>=45?'Worth a closer look':'High risk';
   paintVerdict(a.verdict||'Result', score, badgeText, a.summary||'');
 
+  const breakdown = a.breakdown || [];
+  // FREE finding: the deadline item if present, else the first breakdown item
+  let free = breakdown.find(function(b){ return /deadline/i.test(b.area||''); }) || breakdown[0];
+  document.getElementById('lrFreeFinding').textContent = free ? (free.note || free.area || '—') : 'See the full report for the deadline assessment.';
+
+  // Clean lists (drop empty placeholders) for accurate counts
+  const docs = (a.documents||[]).filter(function(d){ return d && d.trim(); }).slice(0,8);
+  const risks = (a.risks||[]).filter(function(r){ return r && r.trim(); }).slice(0,5);
+  document.getElementById('lrDocCount').textContent = docs.length;
+  document.getElementById('lrRiskCount').textContent = risks.length;
+
+  // Populate the (locked) full detail so it's ready to reveal on purchase
   const tb=document.getElementById('lrBreakdown'); tb.innerHTML='';
-  (a.breakdown||[]).forEach(function(b){
+  breakdown.forEach(function(b){
     const tr=document.createElement('tr');
     tr.innerHTML='<td>'+esc(b.area)+'</td>'+
                  '<td style="font-weight:400;color:var(--slate);text-align:left">'+esc(b.note)+'</td>'+
@@ -1641,23 +1686,34 @@ function renderReal(a){
   });
 
   const dl=document.getElementById('lrDocs'); dl.innerHTML='';
-  (a.documents||[]).slice(0,8).forEach(function(d){ const li=document.createElement('li'); li.innerHTML=CHECK_SVG+'<span>'+esc(d)+'</span>'; dl.appendChild(li); });
+  docs.forEach(function(d){ const li=document.createElement('li'); li.innerHTML=CHECK_SVG+'<span>'+esc(d)+'</span>'; dl.appendChild(li); });
   if(!dl.children.length) dl.innerHTML='<li>'+CHECK_SVG+'<span>None clearly listed in the notice.</span></li>';
 
   const rl=document.getElementById('lrRisks'); rl.innerHTML='';
-  (a.risks||[]).slice(0,5).forEach(function(r){ const li=document.createElement('li'); li.innerHTML=DOT_SVG+'<span>'+esc(r)+'</span>'; rl.appendChild(li); });
+  risks.forEach(function(r){ const li=document.createElement('li'); li.innerHTML=DOT_SVG+'<span>'+esc(r)+'</span>'; rl.appendChild(li); });
   if(!rl.children.length) rl.innerHTML='<li>'+DOT_SVG+'<span>No major risks flagged.</span></li>';
 
   document.getElementById('lrEffort').textContent = a.effort || '—';
   document.getElementById('lrRec').textContent = a.recommendation || '';
 
+  // Show free teaser + locked detail; hide sample bits
+  document.getElementById('lrKind').textContent='Your tender audit';
   document.getElementById('lrSampleNote').style.display='none';
-  document.getElementById('lrReal').style.display='block';
+  document.getElementById('lrSampleCta').style.display='none';
+  document.getElementById('lrTeaser').style.display='block';
+  const locked=document.getElementById('lrLocked');
+  locked.style.display='block';
+  locked.classList.add('is-locked');
 }
 
 function renderSample(){
-  document.getElementById('lrReal').style.display='none';
+  document.getElementById('lrKind').textContent='Your sample audit';
+  document.getElementById('lrTeaser').style.display='none';
+  const locked=document.getElementById('lrLocked');
+  locked.style.display='none';
+  locked.classList.remove('is-locked');
   document.getElementById('lrSampleNote').style.display='block';
+  document.getElementById('lrSampleCta').style.display='inline-flex';
   let score=60;
   const exp=document.getElementById('fExp').value;
   const ins=document.getElementById('fInsurance').value;
