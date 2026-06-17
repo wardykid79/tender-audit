@@ -912,7 +912,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
               <div class="lock-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
               <div class="lock-title">Unlock your full Tender Readiness Report</div>
               <div class="lock-sub">See every required document, all flagged risks, the full 7-point scoring breakdown and your recommended next steps.</div>
-              <a href="#pricing" class="btn btn-primary" style="margin-top:4px">Unlock Full Report — €49 / £49</a>
+              <a href="#pricing" class="btn btn-primary" style="margin-top:4px">Unlock Full Report — £49 / €59</a>
               <a href="#pricing" class="lock-alt">Or have a real EA contractor review it for you &rarr;</a>
             </div>
           </div>
@@ -1050,7 +1050,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="price-card reveal">
         <div class="ptag">Free</div>
         <h3>Tender Audit Checker</h3>
-        <div class="amount">€0 <small>/ £0</small></div>
+        <div class="amount">£0 <small>/ €0</small></div>
         <p class="pdesc">A fast first read to decide if a tender is even worth your time.</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Bid / Maybe / No-Bid score</li>
@@ -1064,7 +1064,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="price-card reveal">
         <div class="ptag">Full report</div>
         <h3>Tender Readiness Report</h3>
-        <div class="amount">From €49 <small>/ £49</small></div>
+        <div class="amount">From £49 <small>/ €59</small></div>
         <p class="sub-note">One-off · per tender</p>
         <p class="pdesc">The complete readiness picture so you bid with confidence — or walk away early.</p>
         <ul>
@@ -1085,7 +1085,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         <span class="feat-flag">Best value</span>
         <div class="ptag">Subscription · Pro</div>
         <h3>Tender Audit Pro</h3>
-        <div class="amount" id="proPrice">€29 / £29 <small>/ mo</small></div>
+        <div class="amount" id="proPrice">£29 / €35 <small>/ mo</small></div>
         <p class="sub-note" id="proNote">Billed monthly · cancel anytime</p>
         <p class="pdesc">For businesses bidding regularly — get the right tenders found, audited and tracked for you.</p>
         <ul>
@@ -1102,7 +1102,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="price-card reveal">
         <div class="ptag">Done-with-you</div>
         <h3>Tender Response Pack</h3>
-        <div class="amount">From €499 <small>/ £499</small></div>
+        <div class="amount">From £499 <small>/ €599</small></div>
         <p class="sub-note">One-off · per tender</p>
         <p class="pdesc">Hands-on help to structure and prepare a strong, compliant response.</p>
         <ul>
@@ -1816,10 +1816,10 @@ function setBilling(annual){
   billMonthly.classList.toggle('active', !annual);
   billAnnual.classList.toggle('active', annual);
   if(annual){
-    proPrice.innerHTML = '€24 / £24 <small>/ mo</small>';
-    proNote.textContent = 'Billed €290 / £290 a year · 2 months free';
+    proPrice.innerHTML = '£24 / €29 <small>/ mo</small>';
+    proNote.textContent = 'Billed £290 / €349 a year · 2 months free';
   } else {
-    proPrice.innerHTML = '€29 / £29 <small>/ mo</small>';
+    proPrice.innerHTML = '£29 / €35 <small>/ mo</small>';
     proNote.textContent = 'Billed monthly · cancel anytime';
   }
 }
