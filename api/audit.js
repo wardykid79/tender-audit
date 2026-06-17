@@ -12,7 +12,7 @@
 
 // Model: Haiku is cheapest/fastest and fine for the free checker.
 // Confirm the current model name in your Anthropic console; swap to a Sonnet model for higher quality.
-const MODEL = const MODEL = "claude-3-5-haiku-latest";
+const MODEL = "claude-haiku-4-5-20251001";
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
