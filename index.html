@@ -1893,5 +1893,10 @@ const io = new IntersectionObserver((entries) => {
 }, {threshold:.12});
 document.querySelectorAll('.reveal').forEach((el,i) => { el.style.transitionDelay = (i % 4 * 0.06) + 's'; io.observe(el); });
 </script>
-</body>
+</body><style>
+@media (max-width:600px){
+  .btn{ white-space:normal; }
+  .niche-text, .niche-checks{ min-width:0; }
+}
+</style>
 </html>
