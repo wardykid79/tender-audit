@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tender Audit | Bid/No-Bid Tender Checker for Ireland &amp; Northern Ireland</title>
+<meta name="description" content="Paste or upload a public tender notice and get a Bid / Maybe / No-Bid readiness audit covering deadline risk, documents, insurance, turnover, scoring criteria and compliance gaps for Ireland and Northern Ireland.">
+<meta name="theme-color" content="#0A1A2B">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tender-audit.com/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5' fill='%230A1A2B'/><path d='M7 12l3 3 7-7' fill='none' stroke='%230E9F8E' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Tender Audit">
+<meta property="og:title" content="Win public contracts in Ireland & Northern Ireland — without guessing">
+<meta property="og:description" content="Check whether a public tender is worth bidding for before you spend days on it. Independent Bid / Maybe / No-Bid readiness audit for Ireland & Northern Ireland.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tender-audit.com/">
+<meta property="og:image" content="https://tender-audit.com/og-image.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Win public contracts in Ireland & Northern Ireland — without guessing">
+<meta name="twitter:description" content="Independent Bid / Maybe / No-Bid tender readiness checker for Ireland & Northern Ireland.">
+<meta name="twitter:image" content="https://tender-audit.com/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ===== Schema Markup ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Tender Audit",
+      "url": "https://tender-audit.com",
+      "description": "Independent AI-assisted tender readiness and Bid/No-Bid checker for Ireland and Northern Ireland.",
+      "areaServed": ["IE", "GB-NIR"]
+    },
+    {
+      "@type": "WebSite",
+      "name": "Tender Audit",
+      "url": "https://tender-audit.com"
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Tender readiness audit",
+      "provider": { "@type": "Organization", "name": "Tender Audit" },
+      "areaServed": ["Ireland", "Northern Ireland"],
+      "description": "Bid / Maybe / No-Bid tender audit covering deadline risk, required documents, insurance, turnover, experience, scoring criteria and compliance gaps."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Tender Audit Checker",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": [
+        { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "name": "Free Tender Audit Checker" },
+        { "@type": "Offer", "price": "49", "priceCurrency": "EUR", "name": "Full Tender Readiness Report" },
+        { "@type": "Offer", "price": "29", "priceCurrency": "EUR", "name": "Tender Audit Pro (monthly subscription)" },
+        { "@type": "Offer", "price": "499", "priceCurrency": "EUR", "name": "Done-With-You Tender Response Pack" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Is Tender Audit affiliated with eTenders.gov.ie or eTendersNI?","acceptedAnswer":{"@type":"Answer","text":"No. Tender Audit is independent and not affiliated with any government portal, public buyer, eTenders.gov.ie or eTendersNI."}},
+        {"@type":"Question","name":"Can Tender Audit guarantee we will win?","acceptedAnswer":{"@type":"Answer","text":"No. It helps identify risks, readiness gaps and response structure. It does not guarantee contract award."}},
+        {"@type":"Question","name":"Is this for Ireland or Northern Ireland?","acceptedAnswer":{"@type":"Answer","text":"Both. Users choose their tender region at the start."}},
+        {"@type":"Question","name":"Who is this for?","acceptedAnswer":{"@type":"Answer","text":"Small and medium businesses that do not have an in-house bid team."}},
+        {"@type":"Question","name":"Can I use this before paying a bid writer?","acceptedAnswer":{"@type":"Answer","text":"Yes. That is one of the main uses. It helps decide whether a tender is worth taking further."}},
+        {"@type":"Question","name":"What sectors does it cover?","acceptedAnswer":{"@type":"Answer","text":"Transport, catering, cleaning, construction, facilities, security, care, training, blinds and window coverings, waste, food supply and other service businesses."}},
+        {"@type":"Question","name":"What happens to uploaded tender documents?","acceptedAnswer":{"@type":"Answer","text":"Files are used only to generate your audit. A full privacy policy will explain retention and deletion."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root{
+  --navy:#0A1A2B;
+  --navy-2:#0F2438;
+  --ink:#16202B;
+  --charcoal:#1C2A38;
+  --slate:#5A6B7B;
+  --grey:#F4F6F8;
+  --grey-2:#E7ECF1;
+  --line:#DCE3EA;
+  --white:#ffffff;
+  --teal:#0E9F8E;
+  --teal-dk:#0A7E70;
+  --teal-soft:#E6F6F3;
+  --bid:#16A34A;
+  --maybe:#E08A00;
+  --nobid:#D6342B;
+  --bid-soft:#E8F6EC;
+  --maybe-soft:#FCF1DC;
+  --nobid-soft:#FBE9E7;
+  --shadow:0 1px 2px rgba(10,26,43,.04), 0 8px 24px rgba(10,26,43,.06);
+  --shadow-lg:0 24px 60px rgba(10,26,43,.16);
+  --r:14px;
+  --r-lg:20px;
+  --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  font-family:'Hanken Grotesk',sans-serif;
+  color:var(--ink);
+  background:var(--white);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,.display{font-family:'Bricolage Grotesque',sans-serif;line-height:1.08;letter-spacing:-.02em;font-weight:700}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-dk)}
+section{position:relative}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:1rem;
+  padding:.85rem 1.5rem;border-radius:12px;border:1px solid transparent;
+  cursor:pointer;transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+  white-space:nowrap;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 6px 18px rgba(14,159,142,.35)}
+.btn-primary:hover{background:var(--teal-dk);box-shadow:0 10px 26px rgba(14,159,142,.45)}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,.28);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-dark:hover{background:var(--navy-2)}
+.btn-outline{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal-dk)}
+.btn-lg{padding:1rem 1.8rem;font-size:1.05rem}
+.btn-block{width:100%;justify-content:center}
+
+/* ---------- Nav ---------- */
+header.nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.25rem;letter-spacing:-.02em;color:var(--navy)}
+.brand .mark{
+  width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--navy),var(--teal-dk));color:#fff;
+  box-shadow:0 4px 12px rgba(10,26,43,.2);
+}
+.brand .mark svg{width:19px;height:19px}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.nav-links a{font-weight:600;font-size:.95rem;color:var(--charcoal);transition:color .15s}
+.nav-links a:hover{color:var(--teal-dk)}
+.nav-cta{display:flex;align-items:center;gap:.8rem}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:42px;height:42px;cursor:pointer}
+.menu-btn span{display:block;width:18px;height:2px;background:var(--navy);margin:3px auto;border-radius:2px;transition:.25s}
+.menu-btn.open span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.menu-btn.open span:nth-child(2){opacity:0}
+.menu-btn.open span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;gap:.2rem;padding:12px 22px 22px;border-bottom:1px solid var(--line);background:#fff}
+.mobile-menu a{padding:.7rem .2rem;font-weight:600;border-bottom:1px solid var(--grey-2)}
+.mobile-menu .btn{margin-top:.8rem}
+@media(max-width:920px){
+  .nav-links,.nav-cta .btn{display:none}
+  .menu-btn{display:block}
+  .mobile-menu.open{display:flex}
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:
+    radial-gradient(900px 500px at 80% -10%, rgba(14,159,142,.22), transparent 60%),
+    radial-gradient(700px 600px at 0% 110%, rgba(14,159,142,.10), transparent 55%),
+    linear-gradient(160deg,var(--navy) 0%, var(--navy-2) 60%, #0c2236 100%);
+  color:#EAF1F7;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:44px 44px;mask-image:radial-gradient(circle at 70% 20%,#000,transparent 75%);opacity:.5;
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:72px 0 84px;position:relative;z-index:2}
+.trust-pill{display:inline-flex;align-items:center;gap:.55rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:.4rem .85rem;border-radius:999px;font-size:.82rem;font-weight:600;color:#cfe0ee;margin-bottom:1.4rem}
+.trust-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(14,159,142,.25)}
+.hero h1{font-size:clamp(2.3rem,5.2vw,3.85rem);color:#fff;font-weight:800;margin-bottom:1.1rem}
+.hero h1 .hl{color:var(--teal);position:relative}
+.hero .sub{font-size:1.12rem;color:#B9CADA;max-width:560px;margin-bottom:1.9rem}
+.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.hero-note{font-size:.86rem;color:#8FA6BA;max-width:480px;display:flex;gap:.6rem}
+.hero-note svg{flex:none;width:17px;height:17px;margin-top:3px;color:var(--teal)}
+
+/* hero dashboard card */
+.dash{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r-lg);padding:22px;backdrop-filter:blur(6px);
+  box-shadow:var(--shadow-lg);position:relative;z-index:2;
+}
+.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.dash-top .tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9fb4c7}
+.dash-top .reg{font-size:.8rem;background:rgba(14,159,142,.18);color:#7be6d6;padding:.25rem .6rem;border-radius:8px;font-weight:700}
+.gauge-row{display:flex;gap:18px;align-items:center;margin-bottom:18px}
+.gauge{position:relative;width:124px;height:124px;flex:none}
+.gauge svg{transform:rotate(-90deg)}
+.gauge .num{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.gauge .num b{font-family:'Bricolage Grotesque';font-size:1.9rem;color:#fff;line-height:1;display:block}
+.gauge .num small{font-size:.68rem;color:#9fb4c7;letter-spacing:.05em}
+.verdict{flex:1}
+.verdict .vlabel{font-size:.72rem;color:#9fb4c7;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem}
+.verdict .vbig{font-family:'Bricolage Grotesque';font-weight:800;font-size:1.5rem;color:var(--maybe)}
+.verdict p{font-size:.85rem;color:#aebfd0;margin-top:.35rem}
+.bars{display:flex;flex-direction:column;gap:11px}
+.bar-item{font-size:.82rem}
+.bar-item .bl{display:flex;justify-content:space-between;color:#cdd9e4;margin-bottom:.3rem}
+.bar-item .bl b{color:#fff;font-weight:700}
+.track{height:7px;background:rgba(255,255,255,.1);border-radius:6px;overflow:hidden}
+.fill{height:100%;border-radius:6px;width:0;transition:width 1.1s cubic-bezier(.16,1,.3,1)}
+
+/* logo strip */
+.strip{background:var(--white);border-bottom:1px solid var(--line)}
+.strip .wrap{display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;padding:20px 22px;color:var(--slate);font-size:.86rem;font-weight:600}
+.strip span{display:inline-flex;align-items:center;gap:.45rem}
+.strip svg{width:16px;height:16px;color:var(--teal-dk)}
+
+/* ---------- Section shells ---------- */
+.sec{padding:86px 0}
+.sec-grey{background:var(--grey)}
+.sec-navy{background:var(--navy);color:#dbe6f0}
+.sec-head{max-width:760px;margin:0 auto 52px;text-align:center}
+.sec-head h2{font-size:clamp(1.8rem,3.6vw,2.65rem);color:var(--navy);margin:.7rem 0 .8rem}
+.sec-navy .sec-head h2{color:#fff}
+.sec-head p{font-size:1.08rem;color:var(--slate)}
+.sec-navy .sec-head p{color:#9fb4c7}
+.sec-head.left{text-align:left;margin-left:0}
+
+/* ---------- Region cards ---------- */
+.region-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.region-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s;cursor:pointer;position:relative;overflow:hidden;
+}
+.region-card::after{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.region-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--teal)}
+.region-card:hover::after{transform:scaleX(1)}
+.region-card.selected{border-color:var(--teal);box-shadow:0 0 0 2px var(--teal-soft)}
+.region-card.selected::after{transform:scaleX(1)}
+.flag{width:46px;height:32px;border-radius:6px;overflow:hidden;display:flex;box-shadow:0 2px 6px rgba(0,0,0,.12);margin-bottom:16px}
+.flag i{flex:1}
+.flag.ie i:nth-child(1){background:#169B62}.flag.ie i:nth-child(2){background:#fff}.flag.ie i:nth-child(3){background:#FF883E}
+.flag.ni{
+  background:
+    linear-gradient(#CE1126,#CE1126) center/100% 7px no-repeat,
+    linear-gradient(#CE1126,#CE1126) center/7px 100% no-repeat,
+    #fff;
+  border:1px solid var(--line);
+}
+.region-card h3{font-size:1.4rem;color:var(--navy);margin-bottom:.3rem}
+.region-card .portal{font-size:.9rem;color:var(--slate);margin-bottom:1.2rem}
+.region-card ul{list-style:none;margin-bottom:1.6rem;display:flex;flex-direction:column;gap:.55rem}
+.region-card li{font-size:.93rem;display:flex;gap:.6rem;align-items:flex-start;color:var(--charcoal)}
+.region-card li svg{flex:none;width:17px;height:17px;color:var(--teal);margin-top:4px}
+
+/* ---------- Problem cards ---------- */
+.prob-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prob{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px;transition:.2s}
+.prob:hover{border-color:var(--nobid);transform:translateY(-3px)}
+.prob .ico{width:40px;height:40px;border-radius:10px;background:var(--nobid-soft);display:grid;place-items:center;margin-bottom:12px}
+.prob .ico svg{width:20px;height:20px;color:var(--nobid)}
+.prob b{display:block;font-family:'Bricolage Grotesque';font-size:1.02rem;color:var(--navy)}
+
+/* ---------- Checker form ---------- */
+.checker{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;max-width:920px;margin:0 auto}
+.checker-head{background:var(--navy);color:#fff;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.checker-head h3{font-size:1.3rem}
+.checker-head .seg{display:flex;background:rgba(255,255,255,.08);border-radius:10px;padding:4px;gap:4px}
+.checker-head .seg button{border:none;background:transparent;color:#b9cada;font-weight:700;font-size:.85rem;padding:.5rem .9rem;border-radius:7px;cursor:pointer;transition:.2s;font-family:inherit}
+.checker-head .seg button.active{background:var(--teal);color:#fff}
+.checker-body{padding:28px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.85rem;font-weight:700;color:var(--charcoal);margin-bottom:.45rem}
+.field input,.field select,.field textarea{
+  width:100%;font-family:inherit;font-size:.95rem;padding:.75rem .9rem;border:1px solid var(--line);
+  border-radius:10px;background:#fff;color:var(--ink);transition:.15s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.field textarea{resize:vertical;min-height:110px}
+.upload{border:2px dashed var(--line);border-radius:12px;padding:22px;text-align:center;color:var(--slate);cursor:pointer;transition:.2s}
+.upload:hover{border-color:var(--teal);background:var(--teal-soft)}
+.upload.has-file{border-color:var(--teal);border-style:solid;background:var(--teal-soft)}
+.upload.drag{border-color:var(--teal);background:var(--teal-soft)}
+.upload svg{width:26px;height:26px;color:var(--teal);margin:0 auto 6px}
+.upload b{color:var(--charcoal);font-family:'Bricolage Grotesque'}
+.upload small{display:block;font-size:.78rem;margin-top:3px}
+.privacy-min{font-size:.78rem;color:var(--slate);margin-top:14px;display:flex;gap:.5rem;align-items:flex-start}
+.privacy-min svg{flex:none;width:15px;height:15px;margin-top:3px;color:var(--teal-dk)}
+
+/* live result inside checker */
+.live-result{display:none;margin-top:24px;border-top:1px solid var(--line);padding-top:24px;animation:rise .5s ease}
+.live-result.show{display:block}
+.lr-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.lr-grid{grid-template-columns:1fr}}
+.free-finding{background:var(--teal-soft);border:1px solid var(--teal);border-radius:var(--r);padding:14px 16px;margin-bottom:14px}
+.ff-label{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:4px}
+.free-finding p{font-size:.95rem;color:var(--charcoal)}
+.teaser-counts{font-size:.95rem;color:var(--charcoal);line-height:1.55}
+.locked-wrap{position:relative;margin-top:20px}
+.locked-content{transition:filter .2s}
+.locked-wrap.is-locked .locked-content{filter:blur(6px);opacity:.5;pointer-events:none;user-select:none;max-height:380px;overflow:hidden}
+.lock-overlay{display:none}
+.locked-wrap.is-locked .lock-overlay{display:flex;position:absolute;inset:0;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:24px;border-radius:var(--r);background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.78) 42%,rgba(255,255,255,.96) 100%)}
+.lock-badge{width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center}
+.lock-badge svg{width:22px;height:22px}
+.lock-title{font-weight:800;font-size:1.15rem;color:var(--navy);line-height:1.2}
+.lock-sub{font-size:.9rem;color:var(--slate);max-width:430px;line-height:1.45}
+.lock-alt{font-size:.85rem;color:var(--teal);font-weight:600;text-decoration:none}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.lr-top{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.lr-gauge{width:110px;height:110px;position:relative;flex:none}
+.lr-gauge svg{transform:rotate(-90deg)}
+.lr-gauge .n{position:absolute;inset:0;display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.7rem;color:var(--navy)}
+.lr-verdict h4{font-size:1.5rem}
+.lr-verdict p{font-size:.9rem;color:var(--slate)}
+.badge{display:inline-block;padding:.3rem .8rem;border-radius:8px;font-weight:800;font-size:.85rem;font-family:'Bricolage Grotesque';margin-top:.4rem}
+.badge.bid{background:var(--bid-soft);color:var(--bid)}
+.badge.maybe{background:var(--maybe-soft);color:var(--maybe)}
+.badge.nobid{background:var(--nobid-soft);color:var(--nobid)}
+
+/* ---------- Example result ---------- */
+.result-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);overflow:hidden;max-width:960px;margin:0 auto}
+.rc-head{padding:26px 30px;background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.rc-head .score-big{font-family:'Bricolage Grotesque';font-weight:800;font-size:2.6rem;line-height:1}
+.rc-head .score-big span{font-size:1.1rem;color:#9fb4c7;font-weight:600}
+.rc-head .verdict-pill{padding:.5rem 1.1rem;border-radius:10px;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.05rem;background:var(--maybe-soft);color:var(--maybe)}
+.rc-body{padding:30px;display:grid;grid-template-columns:1.1fr .9fr;gap:34px}
+.rtable{width:100%;border-collapse:collapse}
+.rtable th{text-align:left;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);padding:0 0 10px;border-bottom:1px solid var(--line)}
+.rtable td{padding:11px 0;border-bottom:1px solid var(--grey-2);font-size:.92rem}
+.rtable td:first-child{color:var(--charcoal);font-weight:600}
+.rtable td:last-child{text-align:right;font-weight:700}
+.chip{display:inline-block;padding:.18rem .6rem;border-radius:6px;font-size:.8rem;font-weight:700}
+.chip.h{background:var(--nobid-soft);color:var(--nobid)}
+.chip.m{background:var(--maybe-soft);color:var(--maybe)}
+.chip.g{background:var(--bid-soft);color:var(--bid)}
+.risks{background:var(--grey);border-radius:var(--r);padding:22px}
+.risks h4{font-size:1.05rem;color:var(--navy);margin-bottom:14px;display:flex;gap:.5rem;align-items:center}
+.risks h4 svg{width:18px;height:18px;color:var(--maybe)}
+.risks ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.risks li{font-size:.9rem;display:flex;gap:.6rem;color:var(--charcoal)}
+.risks li svg{flex:none;width:16px;height:16px;color:var(--maybe);margin-top:3px}
+.rc-foot{padding:0 30px 30px;text-align:center}
+.locked{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--slate);margin-bottom:14px}
+.locked svg{width:15px;height:15px}
+
+/* ---------- Pricing ---------- */
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch}
+.bill-toggle{display:flex;justify-content:center;align-items:center;gap:14px;margin:0 auto 34px}
+.bill-toggle .seg2{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:11px;padding:4px;gap:4px}
+.bill-toggle .seg2 button{border:none;background:transparent;font-family:inherit;font-weight:700;font-size:.9rem;color:var(--slate);padding:.55rem 1.1rem;border-radius:8px;cursor:pointer;transition:.18s}
+.bill-toggle .seg2 button.active{background:var(--navy);color:#fff}
+.bill-toggle .save{font-size:.8rem;font-weight:700;color:var(--teal-dk);background:var(--teal-soft);padding:.3rem .7rem;border-radius:8px}
+.price-card .sub-note{font-size:.78rem;color:var(--slate);margin-top:-.4rem;margin-bottom:1.1rem;min-height:1.1rem}
+.price-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;display:flex;flex-direction:column;transition:.2s;position:relative}
+.price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.price-card.feat{border-color:var(--teal);box-shadow:0 0 0 2px var(--teal-soft),var(--shadow)}
+.price-card .ptag{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dk);margin-bottom:.6rem}
+.price-card h3{font-size:1.35rem;color:var(--navy);margin-bottom:.4rem}
+.price-card .amount{font-family:'Bricolage Grotesque';font-weight:800;font-size:2.05rem;color:var(--navy);margin-bottom:.2rem;line-height:1.1}
+.price-card .amount small{font-size:1rem;color:var(--slate);font-weight:600}
+.price-card .pdesc{font-size:.9rem;color:var(--slate);margin-bottom:1.3rem}
+.price-card ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.6rem;flex:1}
+.price-card li{font-size:.9rem;display:flex;gap:.55rem;align-items:flex-start}
+.price-card li svg{flex:none;width:16px;height:16px;color:var(--teal);margin-top:4px}
+.feat-flag{position:absolute;top:-12px;right:22px;background:var(--teal);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.05em;padding:.3rem .7rem;border-radius:8px;text-transform:uppercase}
+
+/* ---------- Sectors ---------- */
+.sector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sector{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;transition:.2s}
+.sector:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--teal)}
+.sector .si{width:42px;height:42px;border-radius:11px;background:var(--teal-soft);display:grid;place-items:center;margin-bottom:13px}
+.sector .si svg{width:21px;height:21px;color:var(--teal-dk)}
+.sector h4{font-size:1.08rem;color:var(--navy);margin-bottom:.35rem}
+.sector p{font-size:.88rem;color:var(--slate);margin-bottom:.7rem}
+.sector .check{font-size:.8rem;color:var(--teal-dk);font-weight:700;display:flex;gap:.4rem;align-items:center}
+.sector .check svg{width:14px;height:14px}
+
+/* ---------- Blinds niche ---------- */
+.niche{background:linear-gradient(135deg,var(--navy),#0c2236);border-radius:var(--r-lg);overflow:hidden;color:#dbe6f0;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.niche-text{padding:46px}
+.niche-text .eyebrow{color:#7be6d6}
+.niche-text h3{font-size:1.9rem;color:#fff;margin:.6rem 0 1rem}
+.niche-text p{color:#9fb4c7;margin-bottom:1.7rem;font-size:1rem}
+.niche-checks{padding:46px;background:rgba(255,255,255,.03);border-left:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:.7rem}
+.niche-checks .nh{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#7be6d6;font-weight:700;margin-bottom:.4rem}
+.niche-checks .nc{display:flex;gap:.6rem;font-size:.92rem;color:#cdd9e4}
+.niche-checks .nc svg{flex:none;width:16px;height:16px;color:var(--teal);margin-top:3px}
+
+/* ---------- Steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+.step{padding:0 22px;position:relative}
+.step:not(:last-child)::after{content:"";position:absolute;top:24px;right:-2px;width:4px;height:4px;border-radius:50%;background:var(--line)}
+.step .snum{width:48px;height:48px;border-radius:13px;background:var(--navy);color:#fff;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.3rem;display:grid;place-items:center;margin-bottom:16px;box-shadow:0 8px 18px rgba(10,26,43,.18)}
+.step h4{font-size:1.15rem;color:var(--navy);margin-bottom:.4rem}
+.step p{font-size:.92rem;color:var(--slate)}
+
+/* ---------- Comparison ---------- */
+.compare{max-width:880px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.compare table{width:100%;border-collapse:collapse}
+.compare th{padding:18px 22px;text-align:left;font-family:'Bricolage Grotesque';font-size:1.02rem}
+.compare th:first-child{background:var(--grey);color:var(--slate);width:50%}
+.compare th:last-child{background:var(--navy);color:#fff}
+.compare td{padding:15px 22px;font-size:.92rem;border-top:1px solid var(--grey-2)}
+.compare td:first-child{color:var(--slate)}
+.compare td:last-child{color:var(--charcoal);font-weight:600;background:var(--teal-soft)}
+.compare td:last-child::before{content:"✓ ";color:var(--teal-dk);font-weight:800}
+
+/* ---------- Lead capture ---------- */
+.lead{background:linear-gradient(135deg,var(--teal-dk),var(--teal));border-radius:var(--r-lg);padding:48px;color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;box-shadow:var(--shadow-lg)}
+.lead h2{color:#fff;font-size:2rem;margin-bottom:.7rem}
+.lead p{color:#d6f5ef;margin-bottom:1rem}
+.lead .soon{font-size:.84rem;color:#bdeee6;display:flex;gap:.5rem;align-items:flex-start}
+.lead .soon svg{flex:none;width:16px;height:16px;margin-top:3px}
+.lead-form{background:#fff;border-radius:var(--r);padding:26px}
+.lead-form .field label{color:var(--charcoal)}
+.lead-form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* ---------- FAQ ---------- */
+.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.2s}
+.faq.open{border-color:var(--teal);box-shadow:var(--shadow)}
+.faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:'Bricolage Grotesque';font-weight:600;font-size:1.05rem;color:var(--navy)}
+.faq-q .ic{flex:none;width:24px;height:24px;border-radius:7px;background:var(--grey);display:grid;place-items:center;transition:.25s}
+.faq.open .faq-q .ic{background:var(--teal);transform:rotate(45deg)}
+.faq.open .faq-q .ic svg{color:#fff}
+.faq-q .ic svg{width:14px;height:14px;color:var(--navy);transition:.25s}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--slate);font-size:.95rem}
+.faq-a div{padding:0 22px 20px}
+
+/* ---------- Final CTA ---------- */
+.final{background:var(--navy);color:#fff;text-align:center;padding:80px 0;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 50% 0%,rgba(14,159,142,.25),transparent 60%)}
+.final .wrap{position:relative;z-index:2}
+.final h2{font-size:clamp(1.9rem,4vw,2.8rem);color:#fff;margin-bottom:1rem}
+.final p{color:#9fb4c7;max-width:560px;margin:0 auto 2rem;font-size:1.1rem}
+
+/* ---------- Footer ---------- */
+footer{background:#06121E;color:#8FA6BA;padding:56px 0 28px;font-size:.9rem}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+footer .brand{color:#fff;margin-bottom:1rem}
+footer .fdesc{max-width:300px;color:#7c93a8;font-size:.9rem}
+footer h5{color:#fff;font-family:'Bricolage Grotesque';font-size:.95rem;margin-bottom:1rem}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+footer ul a{color:#8FA6BA;transition:.15s}
+footer ul a:hover{color:var(--teal)}
+.disclaimer{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;font-size:.78rem;color:#647d92;line-height:1.7}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:22px;font-size:.82rem;color:#647d92}
+
+/* ---------- Reveal anim ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;padding:56px 0 64px}
+  .rc-body{grid-template-columns:1fr}
+  .niche{grid-template-columns:1fr}
+  .lead{grid-template-columns:1fr;padding:34px}
+  .prob-grid{grid-template-columns:1fr 1fr}
+  .price-grid{grid-template-columns:1fr 1fr;max-width:620px;margin:0 auto}
+  .sector-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:32px 0}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .sec{padding:60px 0}
+  .region-grid{grid-template-columns:1fr}
+  .grid2{grid-template-columns:1fr}
+  .lead-form .row{grid-template-columns:1fr}
+  .prob-grid{grid-template-columns:1fr 1fr}
+  .price-grid{grid-template-columns:1fr;max-width:420px}
+  .sector-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .rc-head .score-big{font-size:2rem}
+  .niche-text,.niche-checks{padding:30px}
+}
+/* ---------- Learn to Tender ---------- */
+.learn-wrap{display:grid;grid-template-columns:300px 1fr;gap:28px;max-width:1000px;margin:0 auto;align-items:start}
+.learn-rail{display:flex;flex-direction:column;gap:8px;position:sticky;top:84px}
+.lesson-btn{display:flex;align-items:center;gap:12px;text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;font-family:inherit;transition:.18s;color:var(--charcoal)}
+.lesson-btn:hover{border-color:var(--teal)}
+.lesson-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:var(--shadow)}
+.lesson-btn .ln{flex:none;width:30px;height:30px;border-radius:8px;background:var(--teal-soft);color:var(--teal-dk);display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:.9rem;transition:.18s}
+.lesson-btn.active .ln{background:var(--teal);color:#fff}
+.lesson-btn b{font-family:'Bricolage Grotesque';font-weight:600;font-size:.96rem;line-height:1.2}
+.learn-panel{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:34px;box-shadow:var(--shadow);min-height:400px}
+.lesson{display:none;animation:rise .4s ease}
+.lesson.active{display:block}
+.lesson .eyebrow{margin-bottom:.5rem;display:block}
+.lesson h3{font-size:1.5rem;color:var(--navy);margin-bottom:1rem}
+.lesson p{color:var(--charcoal);margin-bottom:1rem}
+.lesson ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.2rem}
+.lesson ul li{display:flex;gap:.7rem;font-size:.95rem;color:var(--charcoal)}
+.lesson ul li svg{flex:none;width:18px;height:18px;color:var(--teal);margin-top:4px}
+.takeaway{display:flex;gap:.8rem;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:10px;padding:16px 18px;font-size:.93rem;color:var(--ink)}
+.takeaway svg{flex:none;width:20px;height:20px;color:var(--teal-dk);margin-top:2px}
+.takeaway b{font-family:'Bricolage Grotesque'}
+.glossary{max-width:1000px;margin:48px auto 0}
+.glossary h3{text-align:center;font-size:1.4rem;color:var(--navy);margin-bottom:6px}
+.glossary .gsub{text-align:center;color:var(--slate);margin-bottom:26px;font-size:.95rem}
+.gloss-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.gterm{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.gterm b{font-family:'Bricolage Grotesque';color:var(--navy);display:block;margin-bottom:.2rem}
+.gterm span{font-size:.9rem;color:var(--slate)}
+.gterm em{display:block;margin-top:.5rem;font-style:normal;font-size:.82rem;color:var(--teal-dk);background:var(--teal-soft);border-radius:8px;padding:.4rem .6rem}
+.gterm em::before{content:"Like ";font-weight:800}
+.learn-cta{text-align:center;margin-top:38px}
+@media(max-width:900px){
+  .learn-wrap{grid-template-columns:1fr;gap:18px}
+  .learn-rail{flex-direction:row;overflow-x:auto;position:static;padding-bottom:6px;-webkit-overflow-scrolling:touch}
+  .lesson-btn{flex:none;min-width:210px}
+  .gloss-grid{grid-template-columns:1fr}
+  .learn-panel{padding:26px}
+}
+/* ---------- Underpricing warning ---------- */
+.warn-panel{background:linear-gradient(180deg,#FFFBF2,#fff);border:1px solid #F3D9A6;border-left:5px solid var(--maybe);border-radius:18px;padding:30px;box-shadow:var(--shadow);max-width:920px;margin:0 auto}
+.warn-top{display:flex;gap:15px;align-items:flex-start;margin-bottom:22px}
+.warn-ico{font-size:1.9rem;line-height:1;flex:none}
+.warn-top h3{font-size:1.45rem;color:var(--navy);margin-bottom:.25rem}
+.warn-top p{color:var(--slate);font-size:.96rem}
+.warn-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.warn-item{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 16px 14px 48px;position:relative}
+.warn-item .wn{position:absolute;left:13px;top:13px;width:24px;height:24px;border-radius:7px;background:var(--maybe-soft);color:var(--maybe);display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:.8rem}
+.warn-item b{display:block;font-family:'Bricolage Grotesque';color:var(--navy);font-size:.97rem;margin-bottom:.1rem}
+.warn-item span{font-size:.84rem;color:var(--slate)}
+.warn-foot{margin-top:16px;background:var(--navy);color:#cfe0ee;border-radius:12px;padding:16px 18px;font-size:.93rem}
+.warn-foot strong{color:#fff}
+@media(max-width:600px){.warn-grid{grid-template-columns:1fr}.warn-panel{padding:24px}}
+/* ---------- Accessibility & polish ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:3px solid var(--teal);outline-offset:2px;border-radius:6px;
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  .reveal{opacity:1 !important;transform:none !important}
+}
+@media(max-width:600px){
+  .compare td,.compare th{padding:12px 14px;font-size:.85rem}
+  .hero h1{font-size:2.05rem}
+}
+/* ---------- Cookie banner ---------- */
+.cookie{position:fixed;left:16px;right:16px;bottom:16px;z-index:200;background:var(--navy);color:#cfe0ee;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px 18px;box-shadow:0 18px 44px rgba(0,0,0,.32);display:none;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;max-width:760px;margin:0 auto}
+.cookie.show{display:flex}
+.cookie p{font-size:.84rem;flex:1;min-width:230px;color:#cfe0ee}
+.cookie a{color:var(--teal);text-decoration:underline}
+.cookie .cbtns{display:flex;gap:8px;flex-wrap:wrap}
+.cookie button{font-family:inherit;font-weight:700;font-size:.82rem;padding:.55rem .95rem;border-radius:9px;cursor:pointer;border:1px solid transparent}
+.cookie .acc{background:var(--teal);color:#fff}
+.cookie .acc:hover{background:var(--teal-dk)}
+.cookie .ess{background:transparent;border-color:rgba(255,255,255,.25);color:#cfe0ee}
+/* ---------- Data trust band ---------- */
+.trust-band{background:var(--navy);color:#cfe0ee;padding:46px 0}
+.trust-band .tb-head{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:22px;text-align:center}
+.trust-band .tb-head svg{flex:none;width:24px;height:24px;color:var(--teal)}
+.trust-band .tb-head h3{color:#fff;font-size:1.4rem}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:920px;margin:0 auto}
+.trust-item{display:flex;gap:.7rem;align-items:flex-start;font-size:.88rem;color:#9fb4c7}
+.trust-item svg{flex:none;width:21px;height:21px;color:var(--teal);margin-top:2px}
+.trust-item b{color:#fff;font-family:'Bricolage Grotesque';display:block;margin-bottom:.15rem;font-size:.98rem}
+.trust-foot{text-align:center;margin-top:22px;font-size:.85rem;color:#9fb4c7}
+.trust-foot a{color:var(--teal);text-decoration:underline}
+@media(max-width:700px){.trust-grid{grid-template-columns:1fr;max-width:400px}}
+
+/* ---------- Mobile overflow fix ---------- */
+@media(max-width:600px){
+  .btn{white-space:normal}
+  .niche-text,.niche-checks{min-width:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </span>
+      Tender Audit
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#ireland-tender-checker">Ireland Checker</a></li>
+        <li><a href="#northern-ireland-tender-checker">Northern Ireland Checker</a></li>
+        <li><a href="#sectors">Sectors</a></li>
+        <li><a href="#learn">Learn</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#tender-alerts">Tender Alerts</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#checker" class="btn btn-primary">Check Tender Free</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#ireland-tender-checker">Ireland Checker</a>
+    <a href="#northern-ireland-tender-checker">Northern Ireland Checker</a>
+    <a href="#sectors">Sectors</a>
+    <a href="#learn">Learn</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#tender-alerts">Tender Alerts</a>
+    <a href="#faq">FAQ</a>
+    <a href="#checker" class="btn btn-primary btn-block">Check Tender Free</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="trust-pill"><span class="dot"></span> Independent tender readiness checker · Ireland &amp; Northern Ireland</span>
+      <h1>Win public contracts in Ireland &amp; Northern Ireland — <span class="hl">without guessing.</span></h1>
+      <p class="sub"><strong style="color:#fff">Before you bid, check what could catch you out.</strong> Paste or upload a tender notice and get a clear Bid / Maybe / No-Bid audit — deadline risk, documents, insurance, turnover, scoring and compliance gaps — for Ireland or Northern Ireland.</p>
+      <div class="hero-ctas">
+        <a href="#checker" class="btn btn-primary btn-lg">Check My Tender Free</a>
+        <a href="#how" class="btn btn-ghost btn-lg">See How It Works</a>
+      </div>
+      <p class="hero-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        No government affiliation. Built to help suppliers understand tender risks before they spend days preparing a bid.
+      </p>
+    </div>
+
+    <!-- hero dashboard preview -->
+    <div class="dash">
+      <div class="dash-top">
+        <span class="tag">Tender Audit · Sample</span>
+        <span class="reg" id="dashReg">Republic of Ireland</span>
+      </div>
+      <div class="gauge-row">
+        <div class="gauge">
+          <svg width="124" height="124" viewBox="0 0 124 124">
+            <circle cx="62" cy="62" r="54" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="12"/>
+            <circle id="heroArc" cx="62" cy="62" r="54" fill="none" stroke="#E08A00" stroke-width="12" stroke-linecap="round" stroke-dasharray="339" stroke-dashoffset="339"/>
+          </svg>
+          <div class="num"><b id="heroScore">0</b><small>/ 100</small></div>
+        </div>
+        <div class="verdict">
+          <div class="vlabel">Recommendation</div>
+          <div class="vbig">Maybe Bid</div>
+          <p>Bid only if documents are ready within 48 hours.</p>
+        </div>
+      </div>
+      <div class="bars">
+        <div class="bar-item"><div class="bl"><span>Deadline risk</span><b>High</b></div><div class="track"><div class="fill" data-w="82%" style="background:var(--nobid)"></div></div></div>
+        <div class="bar-item"><div class="bl"><span>Insurance fit</span><b>Check</b></div><div class="track"><div class="fill" data-w="55%" style="background:var(--maybe)"></div></div></div>
+        <div class="bar-item"><div class="bl"><span>Turnover requirement</span><b>Passed</b></div><div class="track"><div class="fill" data-w="90%" style="background:var(--bid)"></div></div></div>
+        <div class="bar-item"><div class="bl"><span>Scoring clarity</span><b>Good</b></div><div class="track"><div class="fill" data-w="78%" style="background:var(--teal)"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="strip">
+  <div class="wrap">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Works with eTenders.gov.ie</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Works with eTendersNI</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Plain-English results</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Built for SMEs, not big bid teams</span>
+  </div>
+</div>
+
+<!-- ============ REGION SELECTOR ============ -->
+<section class="sec sec-grey" id="region">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Step one</span>
+      <h2>Choose your tender region</h2>
+      <p>The checker adapts its wording, document prompts and compliance checks to your region.</p>
+    </div>
+    <div class="region-grid">
+      <div class="region-card reveal" id="ireland-tender-checker" data-region="ie">
+        <div class="flag ie"><i></i><i></i><i></i></div>
+        <h3>Republic of Ireland</h3>
+        <p class="portal">For businesses checking eTenders.gov.ie opportunities.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> eTenders.gov.ie supplier readiness</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Economic Operator checks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Tax clearance and document prompts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Insurance and experience requirements</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Tender submission risk</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Scoring criteria review</li>
+        </ul>
+        <button class="btn btn-dark btn-block region-select" data-region="ie">Check an Ireland Tender</button>
+      </div>
+
+      <div class="region-card reveal" id="northern-ireland-tender-checker" data-region="ni">
+        <div class="flag ni"></div>
+        <h3>Northern Ireland</h3>
+        <p class="portal">For businesses checking eTendersNI opportunities.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> eTendersNI supplier readiness</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> EA, councils, HSC and public-sector opportunities</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Insurance and policy checks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Lots, frameworks and clarification risks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Social value and compliance prompts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Submission deadline review</li>
+        </ul>
+        <button class="btn btn-dark btn-block region-select" data-region="ni">Check a Northern Ireland Tender</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The real problem</span>
+      <h2>Most small businesses don't lose tenders because they're bad businesses. They lose because they miss something.</h2>
+      <p>Public tenders are confusing, document-heavy and unforgiving. Businesses waste days on tenders they were never ready for — and only find out at the deadline.</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><b>Deadline too close</b></div>
+      <div class="prob reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><b>Missing insurance</b></div>
+      <div class="prob reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div><b>No relevant references</b></div>
+      <div class="prob reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><b>Turnover too high</b></div>
+      <div class="prob reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M9 15l2 2 4-4"/></svg></div><b>Mandatory document missed</b></div>
+      <div class="prob reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><b>Scoring misunderstood</b></div>
+      <div class="prob reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div><b>Wrong portal step missed</b></div>
+      <div class="prob reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><b>Weak response structure</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FREE CHECKER ============ -->
+<section class="sec sec-grey" id="checker">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Free tool</span>
+      <h2>Free Tender Audit Checker</h2>
+      <p>Add your tender details below and get a sample Bid / Maybe / No-Bid score in seconds. No payment required.</p>
+    </div>
+
+    <div class="checker reveal">
+      <div class="checker-head">
+        <h3>Free Tender Audit Checker</h3>
+        <div class="seg">
+          <button class="active" data-region="ie" id="segIE">Ireland</button>
+          <button data-region="ni" id="segNI">Northern Ireland</button>
+        </div>
+      </div>
+      <div class="checker-body">
+        <div class="grid2">
+          <div class="field">
+            <label for="fSector">Business sector</label>
+            <select id="fSector">
+              <option>Transport &amp; passenger services</option>
+              <option>School meals &amp; catering</option>
+              <option>Cleaning services</option>
+              <option>Construction &amp; trades</option>
+              <option>Facilities management</option>
+              <option>Blinds &amp; window coverings</option>
+              <option>Security services</option>
+              <option>Care &amp; health providers</option>
+              <option>Training providers</option>
+              <option>Waste &amp; recycling</option>
+              <option>Other service business</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fDeadline">Tender deadline date</label>
+            <input type="date" id="fDeadline">
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <label for="fValue">Estimated contract value</label>
+            <select id="fValue">
+              <option>Under €25k / £25k</option>
+              <option>€25k–€100k / £25k–£100k</option>
+              <option>€100k–€500k / £100k–£500k</option>
+              <option>€500k+ / £500k+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fTurnover">Annual turnover range</label>
+            <select id="fTurnover">
+              <option>Under €100k / £100k</option>
+              <option>€100k–€500k / £100k–£500k</option>
+              <option>€500k–€2m / £500k–£2m</option>
+              <option>€2m+ / £2m+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label id="lblPaste" for="fText">Paste tender notice text (from eTenders.gov.ie)</label>
+          <textarea id="fText" placeholder="Paste the tender notice, scope, eligibility and award criteria here…"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Or upload the tender document</label>
+          <div class="upload" id="uploadBox">
+            <input type="file" id="fileInput" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+            <b id="uploadTitle">Upload tender PDF or Word document</b>
+            <small id="uploadHint">PDF, DOCX up to 25MB — drag &amp; drop or tap to browse</small>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <label for="fInsurance">Insurance levels held</label>
+            <select id="fInsurance">
+              <option>Public liability €1m / £1m</option>
+              <option>Public liability €2.6m / £5m</option>
+              <option>Public + Employer's liability</option>
+              <option>None / not sure</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fYears">Years trading</label>
+            <select id="fYears">
+              <option>Under 1 year</option>
+              <option>1–3 years</option>
+              <option>3–5 years</option>
+              <option>5+ years</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <label for="fExp">Similar public-sector experience?</label>
+            <select id="fExp">
+              <option>Yes — completed similar contracts</option>
+              <option>Some — partial / private only</option>
+              <option>No — first public-sector bid</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fEmail">Email address (to receive your score)</label>
+            <input type="email" id="fEmail" placeholder="you@business.com">
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" id="runChecker">Generate Free Bid/No-Bid Score</button>
+        <p id="checkMsg" style="display:none;margin:10px 2px 0;font-size:.92rem;font-weight:600;text-align:center"></p>
+
+        <p class="privacy-min">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Files and text are used only to generate your audit. A full privacy policy will explain retention and deletion.
+        </p>
+
+        <!-- LIVE RESULT -->
+        <div class="live-result" id="liveResult">
+          <div class="lr-top">
+            <div class="lr-gauge">
+              <svg width="110" height="110" viewBox="0 0 110 110">
+                <circle cx="55" cy="55" r="47" fill="none" stroke="var(--grey-2)" stroke-width="11"/>
+                <circle id="lrArc" cx="55" cy="55" r="47" fill="none" stroke="var(--maybe)" stroke-width="11" stroke-linecap="round" stroke-dasharray="295" stroke-dashoffset="295"/>
+              </svg>
+              <div class="n" id="lrNum">0</div>
+            </div>
+            <div class="lr-verdict">
+              <div class="eyebrow"><span id="lrKind">Your sample audit</span> · <span id="lrRegion">Ireland</span></div>
+              <h4 id="lrTitle">Maybe Bid</h4>
+              <span class="badge maybe" id="lrBadge">Worth a closer look</span>
+              <p id="lrMsg">Promising fit, but a few gaps need closing before the deadline.</p>
+            </div>
+          </div>
+          <p id="lrSampleNote" style="margin-top:18px;font-size:.9rem;color:var(--slate)">This is a sample of what the free checker returns. The full Tender Readiness Report breaks down every document, insurance level and scoring criterion in detail.</p>
+
+          <!-- FREE teaser: one genuine finding + counts of what's locked -->
+          <div id="lrTeaser" style="display:none;margin-top:20px">
+            <div class="free-finding">
+              <div class="ff-label">Free finding · Deadline</div>
+              <p id="lrFreeFinding">—</p>
+            </div>
+            <p class="teaser-counts">We identified <b><span id="lrDocCount">0</span> required document(s)</b> and <b><span id="lrRiskCount">0</span> risk(s)</b> in this tender, plus a full 7-point readiness breakdown. Unlock the report to see exactly what they are — and how to close them before the deadline.</p>
+          </div>
+
+          <!-- LOCKED paid detail: rendered but blurred until purchased -->
+          <div id="lrLocked" class="locked-wrap" style="display:none">
+            <div class="locked-content">
+              <table class="rtable" style="margin-bottom:20px">
+                <thead><tr><th>Area</th><th>Assessment</th><th style="text-align:right">Rating</th></tr></thead>
+                <tbody id="lrBreakdown"></tbody>
+              </table>
+              <div class="lr-grid">
+                <div class="risks">
+                  <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Documents you'll need</h4>
+                  <ul id="lrDocs"></ul>
+                </div>
+                <div class="risks">
+                  <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Top risks to watch</h4>
+                  <ul id="lrRisks"></ul>
+                </div>
+              </div>
+              <p style="margin-top:18px;font-size:.92rem;color:var(--charcoal)"><b>Estimated effort:</b> <span id="lrEffort">—</span> &middot; <span id="lrRec"></span></p>
+            </div>
+            <div class="lock-overlay">
+              <div class="lock-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+              <div class="lock-title">Unlock your full Tender Readiness Report</div>
+              <div class="lock-sub">See every required document, all flagged risks, the full 7-point scoring breakdown and your recommended next steps.</div>
+              <a href="https://buy.stripe.com/bJecN52MMe4B4wi3d2ebu00" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:4px">Unlock Full Report — £49 / €59</a>
+              <a href="#pricing" class="lock-alt">Or have a real EA contractor review it for you &rarr;</a>
+            </div>
+          </div>
+
+          <a id="lrSampleCta" href="#pricing" class="btn btn-dark" style="margin-top:14px;display:none">Unlock Full Tender Readiness Report</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DATA TRUST BAND ============ -->
+<section class="trust-band">
+  <div class="wrap">
+    <div class="tb-head">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      <h3>Your tender data stays private</h3>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <div><b>Used only for your audit</b>The tender text and documents you submit are processed to generate your result — nothing else.</div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        <div><b>Deleted, not kept</b>Tender files are removed after your audit. We don't build a library of your bids.</div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64A9 9 0 1 1 5.64 6.64M12 2v10"/></svg>
+        <div><b>Never sold or shared</b>We don't sell your data or pass it to public buyers, competitors or anyone else.</div>
+      </div>
+    </div>
+    <div class="trust-foot">Aligned with Irish &amp; UK GDPR. <a href="privacy.html">Read our Privacy Policy →</a></div>
+  </div>
+</section>
+
+<!-- ============ EXAMPLE RESULT ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Sample output</span>
+      <h2>This is what a Tender Audit looks like</h2>
+      <p>Clear scoring, plain-English risks and a real recommendation — not a wall of procurement jargon.</p>
+    </div>
+
+    <div class="result-card reveal">
+      <div class="rc-head">
+        <div>
+          <div class="eyebrow" style="color:#7be6d6">Tender Audit Score</div>
+          <div class="score-big">68<span>/100</span></div>
+        </div>
+        <div class="verdict-pill">Maybe Bid</div>
+      </div>
+      <div class="rc-body">
+        <div>
+          <table class="rtable">
+            <thead><tr><th>Area</th><th style="text-align:right">Result</th></tr></thead>
+            <tbody>
+              <tr><td>Deadline risk</td><td><span class="chip h">High</span></td></tr>
+              <tr><td>Insurance fit</td><td><span class="chip m">Needs checking</span></td></tr>
+              <tr><td>Experience fit</td><td><span class="chip m">Moderate</span></td></tr>
+              <tr><td>Turnover requirement</td><td><span class="chip g">Passed</span></td></tr>
+              <tr><td>Required documents</td><td>9 found</td></tr>
+              <tr><td>Compliance risk</td><td><span class="chip m">Medium</span></td></tr>
+              <tr><td>Scoring clarity</td><td><span class="chip g">Good</span></td></tr>
+              <tr><td>Estimated effort</td><td>8–12 hours</td></tr>
+              <tr><td>Recommendation</td><td style="color:var(--maybe)">Bid if docs ready in 48h</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="risks">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg> Top risks found</h4>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Public liability level may be higher than current cover.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Method statement required.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Similar contract references requested.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Deadline is close.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Pricing schedule must be completed exactly.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rc-foot">
+        <div class="locked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Full document checklist, scoring breakdown &amp; response structure in the paid report</div><br>
+        <a href="#pricing" class="btn btn-primary btn-lg">Unlock Full Tender Readiness Report</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICE-SMART WARNING ============ -->
+<section class="sec" id="price-smart">
+  <div class="wrap">
+    <div class="warn-panel reveal">
+      <div class="warn-top">
+        <span class="warn-ico">⚠️</span>
+        <div>
+          <h3>Don't underprice yourself</h3>
+          <p>Winning a tender too cheap can be worse than not winning at all. Here's why — fast:</p>
+        </div>
+      </div>
+      <div class="warn-grid">
+        <div class="warn-item"><span class="wn">1</span><b>You're locked in</b><span>The price usually holds for the whole term — often 3+ years.</span></div>
+        <div class="warn-item"><span class="wn">2</span><b>No cushion</b><span>Thin margins leave nothing for late payments or breakdowns.</span></div>
+        <div class="warn-item"><span class="wn">3</span><b>It starves better work</b><span>Tied-up staff and vehicles can't take higher-margin jobs.</span></div>
+        <div class="warn-item"><span class="wn">4</span><b>Delivery suffers</b><span>Loss-makers get neglected — poor delivery hurts your next score.</span></div>
+        <div class="warn-item"><span class="wn">5</span><b>You set a low bar</b><span>The buyer now expects that price at renewal too.</span></div>
+        <div class="warn-item"><span class="wn">6</span><b>Too low = rejected</b><span>Buyers can disqualify an "abnormally low" bid anyway.</span></div>
+        <div class="warn-item"><span class="wn">7</span><b>Cheapest rarely wins</b><span>Quality is most of the score — margin given away for nothing.</span></div>
+      </div>
+      <div class="warn-foot">
+        <strong>The goal isn't the lowest price.</strong> It's the lowest <em>sustainable</em> price that still scores well. Choosing to walk away is a valid, profitable decision.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="sec sec-grey" id="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2>Pay once, or go Pro for tenders every month.</h2>
+      <p>Check a one-off tender free. Buy a single report when it counts. Or subscribe to Pro if you bid regularly and want the right tenders found, audited and tracked for you.</p>
+    </div>
+
+    <div class="bill-toggle reveal">
+      <div class="seg2">
+        <button class="active" id="billMonthly">Monthly</button>
+        <button id="billAnnual">Annual</button>
+      </div>
+      <span class="save">Annual = 2 months free</span>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card reveal">
+        <div class="ptag">Full report</div>
+        <h3>Tender Readiness Report</h3>
+        <div class="amount">From £49 <small>/ €59</small></div>
+        <p class="sub-note">One-off · per tender</p>
+        <p class="pdesc">The complete readiness picture so you bid with confidence — or walk away early.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Full Bid / Maybe / No-Bid recommendation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Tender summary &amp; eligibility check</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Required document checklist</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Insurance, turnover &amp; experience checks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Deadline action plan</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Scoring criteria breakdown</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Missing compliance items</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Suggested response structure</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Clarification questions to ask the buyer</li>
+        </ul>
+        <a href="https://buy.stripe.com/bJecN52MMe4B4wi3d2ebu00" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block">Get My Full Report</a>
+      </div>
+
+      <div class="price-card feat reveal">
+        <span class="feat-flag">Best value</span>
+        <div class="ptag">Subscription · Pro</div>
+        <h3>Tender Audit Pro</h3>
+        <div class="amount" id="proPrice">£29 / €35 <small>/ mo</small></div>
+        <p class="sub-note" id="proNote">Billed monthly · cancel anytime</p>
+        <p class="pdesc">For businesses bidding regularly — get the right tenders found, audited and tracked for you.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Daily tender alerts for your sector &amp; region</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Ireland, Northern Ireland or both</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> 20 tender audits included each month</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Saved business profile — no re-typing details</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Document tracker &amp; deadline calendar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Founding-member price locked in</li>
+        </ul>
+        <a href="https://buy.stripe.com/7sY9AT4UU6C9bYKdRGebu01" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">Subscribe to Pro</a>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="ptag">Done-with-you</div>
+        <h3>Tender Response Pack</h3>
+        <div class="amount">From £499 <small>/ €599</small></div>
+        <p class="sub-note">One-off · per tender</p>
+        <p class="pdesc">Hands-on help to structure and prepare a strong, compliant response.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Response structure &amp; draft headings</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Compliance checklist</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Evidence tracker</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Submission timeline</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Buyer clarification question list</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Review before submission</li>
+        </ul>
+        <a href="https://buy.stripe.com/5kQ4gz9bagcJ1k65laebu02" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block">Get the Response Pack — £499</a>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="ptag">Free</div>
+        <h3>Tender Audit Checker</h3>
+        <div class="amount">£0 <small>/ €0</small></div>
+        <p class="pdesc">A fast first read to decide if a tender is even worth your time.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Bid / Maybe / No-Bid score</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Deadline risk flag</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Headline document &amp; insurance gaps</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Estimated effort guide</li>
+        </ul>
+        <a href="#checker" class="btn btn-outline btn-block">Check My Tender Free</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:.86rem;color:var(--slate);max-width:660px;margin-left:auto;margin-right:auto">
+      Pro is rolling out sector by sector — founding members lock in early pricing while we expand alert coverage. The Response Pack helps you <strong>structure and prepare</strong> a submission; it does not write your bid for you, and no plan guarantees a contract award.
+    </p>
+  </div>
+</section>
+
+<!-- ============ SECTORS ============ -->
+<section class="sec" id="sectors">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Built for real small businesses, not just big bid teams</h2>
+      <p>Each sector has its own document traps, insurance levels and compliance prompts. Tender Audit checks for the ones that matter to you.</p>
+    </div>
+    <div class="sector-grid">
+      <div class="sector reveal"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>Transport companies</h4><p>School transport, taxi contracts, minibuses, passenger transport, EA-style opportunities.</p><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> We check: licensing, vehicle &amp; driver compliance, route experience</span></div>
+      <div class="sector reveal"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M6 11v9M18 11v9"/></svg></div><h4>School meals &amp; catering</h4><p>Hot meals, prepared meals, food suppliers, school lunch providers.</p><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> We check: HACCP, allergen policy, food hygiene rating</span></div>
+      <div class="sector reveal"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V8l6-5 6 5v13M10 21v-6h4v6"/></svg></div><h4>Cleaning companies</h4><p>School cleaning, office cleaning, deep cleans, hygiene services.</p><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> We check: COSHH, vetting, method statements, insurance</span></div>
+      <div class="sector reveal"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M4 20V10l8-6 8 6v10M9 20v-6h6v6"/></svg></div><h4>Construction &amp; trades</h4><p>Builders, electricians, plumbers, joiners, maintenance contractors.</p><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> We check: RAMS, certifications, H&amp;S record, references</span></div>
+      <div class="sector reveal"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div><h4>Facilities management</h4><p>Grounds maintenance, property maintenance, fire alarms, HVAC, pest control.</p><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> We check: accreditations, SLAs, planned maintenance evidence</span></div>
+      <div class="sector reveal" id="blinds-window-coverings-tender-checker"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="14"/><path d="M4 7h16M4 11h16M4 15h16M12 17v4"/></svg></div><h4>Window blinds &amp; coverings</h4><p>Blinds, curtains, school blackout blinds, government buildings, maintenance and replacement.</p><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> We check: fire-retardant, child-safe specs, RAMS, product data</span></div>
+      <div class="sector reveal"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Security companies</h4><p>Static guarding, CCTV, keyholding, event security.</p><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> We check: SIA/PSA licensing, vetting, GDPR for CCTV</span></div>
+      <div class="sector reveal"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"/></svg></div><h4>Care &amp; health providers</h4><p>Domiciliary care, support services, patient transport, medical suppliers.</p><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> We check: registration, safeguarding, staff vetting, policies</span></div>
+      <div class="sector reveal"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6l2 4h12v13H2z"/><path d="M8 12h8M8 16h5"/></svg></div><h4>Training providers</h4><p>First aid, health and safety, employment training, driver CPC.</p><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> We check: accreditation bodies, trainer quals, learner outcomes</span></div>
+      <div class="sector reveal"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18l-2 14H5z"/><path d="M3 6l-1-3h3M9 11v5M15 11v5"/></svg></div><h4>Waste &amp; recycling</h4><p>Skip hire, recycling, environmental services, drainage, grounds clearance.</p><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> We check: waste permits, carrier licence, environmental policy</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLINDS NICHE ============ -->
+<section class="sec sec-grey">
+  <div class="wrap">
+    <div class="niche reveal">
+      <div class="niche-text">
+        <span class="eyebrow">Real example</span>
+        <h3>Blinds &amp; Window Coverings Tender Checker</h3>
+        <p>A blinds company tendering for schools or government buildings may need far more than a price. There are product, safety and compliance requirements that catch suppliers out at the last minute.</p>
+        <a href="#checker" class="btn btn-primary">Check a Blinds or Window Coverings Tender</a>
+      </div>
+      <div class="niche-checks">
+        <div class="nh">Tender Audit checks for</div>
+        <div class="nc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Public liability &amp; employer's liability insurance</div>
+        <div class="nc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> RAMS (risk assessment &amp; method statements)</div>
+        <div class="nc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Safeguarding for work in schools</div>
+        <div class="nc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Fire-retardant product requirements</div>
+        <div class="nc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Child-safe blind specifications</div>
+        <div class="nc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Product data sheets &amp; warranties</div>
+        <div class="nc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Waste disposal &amp; previous experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Simple process</span>
+      <h2>How Tender Audit works</h2>
+      <p>Four steps from "should I even bother?" to a clear, confident decision.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="snum">1</div><h4>Paste or upload the tender</h4><p>Add the notice text or upload the tender documents.</p></div>
+      <div class="step reveal"><div class="snum">2</div><h4>Choose Ireland or NI</h4><p>The checker adapts to eTenders.gov.ie or eTendersNI style requirements.</p></div>
+      <div class="step reveal"><div class="snum">3</div><h4>Get your Bid / No-Bid score</h4><p>See deadline risk, document gaps, insurance requirements and likely effort.</p></div>
+      <div class="step reveal"><div class="snum">4</div><h4>Upgrade if needed</h4><p>Buy a full report or response pack if the tender is worth pursuing.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEARN TO TENDER ============ -->
+<section class="sec sec-grey" id="learn">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Free learning</span>
+      <h2>Learn how to tender yourself</h2>
+      <p>New to public tenders? Start here. Seven short, plain-English lessons that explain how tendering actually works — so you can decide what to do yourself and where a checker or report saves you time.</p>
+    </div>
+
+    <div class="learn-wrap reveal">
+      <!-- Lesson menu -->
+      <div class="learn-rail">
+        <button class="lesson-btn active" data-lesson="1"><span class="ln">1</span><b>Tendering, in plain English</b></button>
+        <button class="lesson-btn" data-lesson="2"><span class="ln">2</span><b>Where the tenders are</b></button>
+        <button class="lesson-btn" data-lesson="3"><span class="ln">3</span><b>The Bid / No-Bid decision</b></button>
+        <button class="lesson-btn" data-lesson="4"><span class="ln">4</span><b>Documents you'll need</b></button>
+        <button class="lesson-btn" data-lesson="5"><span class="ln">5</span><b>How scoring really works</b></button>
+        <button class="lesson-btn" data-lesson="6"><span class="ln">6</span><b>Writing a response that scores</b></button>
+        <button class="lesson-btn" data-lesson="7"><span class="ln">7</span><b>Mistakes that lose tenders</b></button>
+      </div>
+
+      <!-- Lesson content -->
+      <div class="learn-panel">
+        <div class="lesson active" id="lesson-1">
+          <span class="eyebrow">Lesson 1</span>
+          <h3>Tendering, in plain English</h3>
+          <p>A tender is simply how the public sector buys goods and services. Because they're spending public money, buyers have to be fair and open — so instead of just phoning a supplier they know, they publish the opportunity and invite written bids.</p>
+          <p>You win by scoring well against published criteria, not by who you know. That's good news for small businesses: a clear, well-evidenced response can beat a bigger, better-known name.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Opportunities are published openly for anyone to bid.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Everyone answers the same questions and is scored the same way.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> The buyer must be able to justify why they picked the winner.</li>
+          </ul>
+          <div class="takeaway"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg><span><b>Takeaway:</b> the system rewards businesses that follow the instructions exactly and prove what they claim.</span></div>
+        </div>
+
+        <div class="lesson" id="lesson-2">
+          <span class="eyebrow">Lesson 2</span>
+          <h3>Where the tenders are</h3>
+          <p>In the <strong>Republic of Ireland</strong>, opportunities are published on <strong>eTenders.gov.ie</strong>. Register as an "economic operator" (it's free), build your supplier profile, and set up email alerts for your sector and region. Larger, EU-level contracts also appear on TED, the EU's tenders database.</p>
+          <p>In <strong>Northern Ireland</strong>, opportunities appear on <strong>eTendersNI</strong>. Public buyers include councils, the Education Authority (EA), Health and Social Care (HSC) trusts and government departments. Higher-value UK contracts are also published on the Find a Tender Service.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Register on the right portal before you need it.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Switch on alerts so live tenders land in your inbox.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Keep your supplier profile and contact details up to date.</li>
+          </ul>
+          <div class="takeaway"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg><span><b>Takeaway:</b> the best opportunities often have short deadlines — set up alerts early so you're not playing catch-up.</span></div>
+        </div>
+
+        <div class="lesson" id="lesson-3">
+          <span class="eyebrow">Lesson 3</span>
+          <h3>The Bid / No-Bid decision</h3>
+          <p>Before you lose days writing, run a quick honest check. If the answer to any of these is a hard "no", the tender may not be worth your time right now:</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Can you realistically meet the deadline?</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Do you meet the minimum turnover, insurance and experience requirements?</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Do you have the mandatory documents ready, or can you get them in time?</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Is the contract value worth the effort it will take to win and deliver?</li>
+          </ul>
+          <p>This is exactly what the free Tender Audit checker scores for you — a fast first read so you don't sink time into the wrong opportunity.</p>
+          <div class="takeaway"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg><span><b>Takeaway:</b> deciding <em>not</em> to bid is a strategy, not a failure — it frees you for the tenders you can actually win.</span></div>
+        </div>
+
+        <div class="lesson" id="lesson-4">
+          <span class="eyebrow">Lesson 4</span>
+          <h3>The documents you'll usually need</h3>
+          <p>Most tenders ask for a similar core set. Pull these together once into a "bid folder" and you'll reuse the bulk of it every time:</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Company details and recent financial accounts.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Tax clearance (Ireland) or confirmation your tax affairs are in order.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Insurance certificates at the levels the buyer requires (public liability, employer's liability, sometimes professional indemnity).</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> References or case studies of similar work.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Policies: health &amp; safety, data/GDPR, environmental, equality, and safeguarding where children are involved.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> A method statement and RAMS for any on-site work.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> A completed self-declaration (often the ESPD) and the pricing schedule in the exact format requested.</li>
+          </ul>
+          <div class="takeaway"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg><span><b>Takeaway:</b> build the folder once and keep it current — roughly 80% carries over to your next tender.</span></div>
+        </div>
+
+        <div class="lesson" id="lesson-5">
+          <span class="eyebrow">Lesson 5</span>
+          <h3>How scoring really works</h3>
+          <p>Most public contracts are awarded on the "Most Economically Advantageous Tender" (MEAT) basis — a combination of <strong>price and quality</strong>, with published weightings. You might see something like 60% quality and 40% price.</p>
+          <p>Quality answers are marked against a rubric, your scores are added up, and the highest total wins. So the cheapest bid doesn't automatically win — and a brilliant answer to a low-weighted question won't rescue a weak one elsewhere.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Find the weightings before you write anything.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Put your best effort into the highest-scoring questions.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Check whether price is scored on lowest-price-wins or a formula.</li>
+          </ul>
+          <div class="takeaway"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg><span><b>Takeaway:</b> read the weightings first and spend your time where the marks actually are.</span></div>
+        </div>
+
+        <div class="lesson" id="lesson-6">
+          <span class="eyebrow">Lesson 6</span>
+          <h3>Writing a response that scores</h3>
+          <p>Evaluators can only award marks for what's on the page. Make it easy for them:</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Mirror the question — answer exactly what's asked, in their order, using their headings.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Make a claim, then prove it with evidence: numbers, examples, accreditations.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Respect word and page limits — anything over may be ignored.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Complete the pricing schedule precisely as requested.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Use clarification questions if anything is unclear — buyers must respond.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Submit a day early; portals get busy and slow near the deadline.</li>
+          </ul>
+          <div class="takeaway"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg><span><b>Takeaway:</b> say it, then prove it — assume the evaluator knows nothing about your business.</span></div>
+        </div>
+
+        <div class="lesson" id="lesson-7">
+          <span class="eyebrow">Lesson 7</span>
+          <h3>Mistakes that lose tenders</h3>
+          <p>Most losses aren't about being a worse business — they're avoidable admin slips:</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Missing a mandatory document and being disqualified before scoring.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Submitting late, or leaving the upload until the final hour.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Ignoring word counts, page limits or required file formats.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Answering the question you wish they'd asked, not the one they did.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Missing the clarification deadline and bidding on a wrong assumption.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Pricing in the wrong format, or making claims with no evidence behind them.</li>
+          </ul>
+          <div class="takeaway"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg><span><b>Takeaway:</b> a simple checklist beats last-minute panic — which is exactly what a Tender Audit gives you.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Glossary -->
+    <div class="glossary reveal">
+      <h3>Tender words, explained simply</h3>
+      <p class="gsub">No clue what any of this means? Neither did most people on day one. Here's every buzzword in plain English — with a real-life comparison.</p>
+      <div class="gloss-grid">
+        <div class="gterm"><b>CFT — Call For Tenders</b><span>An invitation to bid for a job the public sector wants done.</span><em>a shop putting up a "wanted" notice asking who'll do the work, and for how much.</em></div>
+        <div class="gterm"><b>Contracting authority</b><span>The public body doing the buying — a council, the Education Authority, a hospital trust.</span><em>the customer placing the order.</em></div>
+        <div class="gterm"><b>Economic operator</b><span>That's you — any business bidding for the work.</span><em>being "the applicant" for a job.</em></div>
+        <div class="gterm"><b>ITT — Invitation to Tender</b><span>The full pack of questions and documents you fill in to make your bid.</span><em>a long job application form.</em></div>
+        <div class="gterm"><b>RFT / RFQ</b><span>Request for Tender or Quotation — another way of saying "send us your bid or price."</span><em>someone asking "can you give me a quote?"</em></div>
+        <div class="gterm"><b>PIN — Prior Information Notice</b><span>An early heads-up that a tender is coming soon.</span><em>a "coming soon" sign before a shop opens.</em></div>
+        <div class="gterm"><b>PQQ / SQ</b><span>A first round that checks you're allowed to bid, before the real questions.</span><em>being checked at the door before you're let in.</em></div>
+        <div class="gterm"><b>ESPD</b><span>A form where you tick "yes, my business meets the basic rules."</span><em>signing a declaration that everything's above board.</em></div>
+        <div class="gterm"><b>MEAT</b><span>Most Economically Advantageous Tender — the winner is best value (price + quality), not just cheapest.</span><em>picking a tradesman on reviews and price, not price alone.</em></div>
+        <div class="gterm"><b>Award criteria / weighting</b><span>How they score you — e.g. 60% on quality, 40% on price.</span><em>exam marks: some questions are worth more than others.</em></div>
+        <div class="gterm"><b>Framework</b><span>A pre-approved list of suppliers a buyer can pick from later without re-advertising.</span><em>being on a "trusted contacts" list they call when work comes up.</em></div>
+        <div class="gterm"><b>Call-off</b><span>When a buyer picks you from that framework for an actual job.</span><em>them ringing a name off the trusted list.</em></div>
+        <div class="gterm"><b>Mini-competition</b><span>A smaller contest just between suppliers already on a framework.</span><em>a play-off between the few who made the shortlist.</em></div>
+        <div class="gterm"><b>Lot</b><span>One tender split into separate chunks you can bid for individually.</span><em>a menu where you can order one dish, not the whole thing.</em></div>
+        <div class="gterm"><b>DPS</b><span>Dynamic Purchasing System — like a framework, but new suppliers can join at any time.</span><em>an open list you can sign up to whenever you're ready.</em></div>
+        <div class="gterm"><b>Subcontracting</b><span>Winning the work, then hiring another firm to carry out part of it for you.</span><em>a builder who wins the job but brings in a plumber for the pipes.</em></div>
+        <div class="gterm"><b>Consortium</b><span>Two or more businesses teaming up to bid together as one.</span><em>joining forces so you're big enough to take the job on.</em></div>
+        <div class="gterm"><b>RAMS</b><span>Risk Assessment and Method Statement — your written plan for doing the work safely.</span><em>a step-by-step safety plan before you start.</em></div>
+        <div class="gterm"><b>Tax clearance</b><span>Proof (from Revenue, in Ireland) that your tax is up to date.</span><em>a certificate saying you've paid your dues.</em></div>
+        <div class="gterm"><b>Social value</b><span>The extra good your contract brings — local jobs, training, greener working.</span><em>bonus points for helping the community.</em></div>
+        <div class="gterm"><b>Standstill period</b><span>A short pause after a winner is chosen, before signing, in case anyone objects.</span><em>a cooling-off period before the deal is final.</em></div>
+        <div class="gterm"><b>Abnormally low tender</b><span>A bid so cheap the buyer worries you can't really deliver — they're allowed to reject it.</span><em>an offer that looks too good to be true.</em></div>
+        <div class="gterm"><b>Threshold</b><span>A spending level — above it, stricter rules and wider advertising kick in.</span><em>a price tag big enough to trigger extra paperwork.</em></div>
+        <div class="gterm"><b>Open vs restricted</b><span>"Open" means anyone can bid straight away; "restricted" means you pass a first sift, then bid.</span><em>open mic night vs an audition before the show.</em></div>
+      </div>
+    </div>
+
+    <div class="learn-cta reveal">
+      <a href="#checker" class="btn btn-primary btn-lg">Now check your tender for free</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Where it fits</span>
+      <h2>Tender Audit isn't a bid writer. It's the check before the bid writer.</h2>
+    </div>
+    <div class="compare reveal">
+      <table>
+        <thead><tr><th>Traditional bid consultant</th><th>Tender Audit</th></tr></thead>
+        <tbody>
+          <tr><td>Best when you already know you want to bid</td><td>Best when you're deciding whether to bid</td></tr>
+          <tr><td>Higher cost</td><td>Free checker and low-cost report</td></tr>
+          <tr><td>Human-led</td><td>Instant AI-assisted first review</td></tr>
+          <tr><td>Contact form first</td><td>Paste / upload and get a score</td></tr>
+          <tr><td>Helps prepare the full tender</td><td>Finds risks before you waste time</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:center;margin-top:22px;max-width:640px;margin-left:auto;margin-right:auto;color:var(--slate);font-size:.95rem">
+      Tender Audit doesn't replace professional bid writers. It helps businesses decide whether a tender is worth pursuing before they spend days writing or pay for full bid support.
+    </p>
+  </div>
+</section>
+
+<!-- ============ LEAD CAPTURE ============ -->
+<section class="sec" id="tender-alerts">
+  <div class="wrap">
+    <div class="lead reveal" id="alerts-contact">
+      <div>
+        <h2>Get tenders for your sector — every week.</h2>
+        <p>Join the free alert list for a weekly digest of Ireland and Northern Ireland tenders relevant to your sector. Bidding regularly? <strong>Tender Audit Pro</strong> turns it into daily alerts plus monthly audits, a saved profile, a document tracker and a deadline calendar.</p>
+        <p class="soon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Founding members lock in early pricing as Pro alert coverage rolls out sector by sector.
+        </p>
+      </div>
+      <div class="lead-form">
+        <div class="field"><label for="aName">Name</label><input type="text" id="aName" placeholder="Your name"></div>
+        <div class="field"><label for="aEmail">Email</label><input type="email" id="aEmail" placeholder="you@business.com"></div>
+        <div class="row">
+          <div class="field"><label for="aSector">Business sector</label>
+            <select id="aSector"><option>Transport</option><option>Catering / school meals</option><option>Cleaning</option><option>Construction &amp; trades</option><option>Facilities</option><option>Blinds &amp; window coverings</option><option>Security</option><option>Care &amp; health</option><option>Training</option><option>Waste &amp; recycling</option><option>Other</option></select>
+          </div>
+          <div class="field"><label for="aRegion">Region</label>
+            <select id="aRegion"><option>Ireland</option><option>Northern Ireland</option><option>Both</option></select>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block" id="joinAlerts">Join Tender Alerts</button>
+        <p id="alertMsg" style="display:none;text-align:center;color:var(--bid);font-weight:700;margin-top:12px;font-size:.9rem">✓ You're on the list — we'll be in touch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec sec-grey" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq reveal"><button class="faq-q">Is Tender Audit affiliated with eTenders.gov.ie or eTendersNI?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div>No. Tender Audit is independent and not affiliated with any government portal, public buyer, eTenders.gov.ie or eTendersNI.</div></div></div>
+      <div class="faq reveal"><button class="faq-q">Can Tender Audit guarantee we will win?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div>No. It helps identify risks, readiness gaps and response structure. It does not guarantee contract award.</div></div></div>
+      <div class="faq reveal"><button class="faq-q">Is this for Ireland or Northern Ireland?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div>Both. Users choose their tender region at the start, and the checker adapts to that region's portals and requirements.</div></div></div>
+      <div class="faq reveal"><button class="faq-q">Who is this for?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div>Small and medium businesses that do not have an in-house bid team.</div></div></div>
+      <div class="faq reveal"><button class="faq-q">Can I use this before paying a bid writer?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div>Yes. That is one of the main uses. It helps decide whether a tender is worth taking further before you commit time or money.</div></div></div>
+      <div class="faq reveal"><button class="faq-q">What sectors does it cover?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div>Transport, catering, cleaning, construction, facilities, security, care, training, blinds and window coverings, waste, food supply and other service businesses.</div></div></div>
+      <div class="faq reveal"><button class="faq-q">What happens to uploaded tender documents?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div>Files are used only to generate your audit. A full privacy policy will explain exactly how long they are kept and how they are deleted.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="wrap">
+    <h2>Decide whether to bid — with more confidence.</h2>
+    <p>Know what could catch you out. Find missing documents before the deadline. Avoid wasting days on the wrong tender.</p>
+    <a href="#checker" class="btn btn-primary btn-lg">Check My Tender Free</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#home" class="brand">
+          <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          Tender Audit
+        </a>
+        <p class="fdesc">Independent AI-assisted tender readiness and Bid/No-Bid checker for small and medium businesses across Ireland and Northern Ireland.</p>
+      </div>
+      <div>
+        <h5>Checkers</h5>
+        <ul>
+          <li><a href="#ireland-tender-checker">Ireland Checker</a></li>
+          <li><a href="#northern-ireland-tender-checker">Northern Ireland Checker</a></li>
+          <li><a href="#ireland-tender-checker">eTenders Ireland Checker</a></li>
+          <li><a href="#northern-ireland-tender-checker">eTendersNI Checker</a></li>
+          <li><a href="#blinds-window-coverings-tender-checker">Blinds &amp; Coverings Checker</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="#sectors">Sectors</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#tender-alerts">Tender Alerts</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+          <li><a href="#alerts-contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      Tender Audit is an independent commercial tool. It is not affiliated with, endorsed by, or connected to eTenders.gov.ie, eTendersNI, the Government of Ireland, the Northern Ireland Department of Finance, the Education Authority, or any public-sector buyer. Tender Audit provides readiness guidance only and does not guarantee tender eligibility, submission acceptance or contract award.
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Tender Audit. All rights reserved.</span>
+      <span>Ireland &amp; Northern Ireland</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ COOKIE BANNER ============ -->
+<div class="cookie" id="cookieBar" role="dialog" aria-label="Cookie notice">
+  <p>We use essential cookies to make this site work. With your consent we'll also use analytics to improve it. See our <a href="privacy.html">Privacy Policy</a>.</p>
+  <div class="cbtns">
+    <button class="ess" id="cookieEss">Essential only</button>
+    <button class="acc" id="cookieAcc">Accept all</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script>
+try { if (window.pdfjsLib) { window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'; } } catch(e){}
+</script>
+<script>
+/* ---------- Year ---------- */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- Formspree lead capture ----------
+   Routes form submissions to your Formspree inbox. */
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xojzvonv";
+async function sendLead(payload){
+  if(FORMSPREE_ENDPOINT.indexOf('YOUR_FORM_ID') !== -1) return false; // not configured yet
+  try{
+    const r = await fetch(FORMSPREE_ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    return r.ok;
+  }catch(e){ return false; }
+}
+
+/* ---------- Cookie consent ---------- */
+(function(){
+  const bar = document.getElementById('cookieBar');
+  function getC(){ try{ return localStorage.getItem('ta_cookie_consent'); }catch(e){ return window.__taConsent || null; } }
+  function setC(v){ try{ localStorage.setItem('ta_cookie_consent', v); }catch(e){ window.__taConsent = v; } }
+  if(!getC()) bar.classList.add('show');
+  document.getElementById('cookieAcc').onclick = () => { setC('all'); bar.classList.remove('show'); /* load analytics here once added */ };
+  document.getElementById('cookieEss').onclick = () => { setC('essential'); bar.classList.remove('show'); };
+})();
+
+/* ---------- Mobile menu ---------- */
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.setAttribute('aria-expanded','false');
+menuBtn.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('open');
+  menuBtn.classList.toggle('open', open);
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileMenu.classList.remove('open');
+  menuBtn.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded','false');
+}));
+
+/* ---------- Region state ---------- */
+let region = 'ie';
+const dashReg = document.getElementById('dashReg');
+const lblPaste = document.getElementById('lblPaste');
+const segIE = document.getElementById('segIE');
+const segNI = document.getElementById('segNI');
+
+function setRegion(r){
+  region = r;
+  const ie = r === 'ie';
+  segIE.classList.toggle('active', ie);
+  segNI.classList.toggle('active', !ie);
+  dashReg.textContent = ie ? 'Republic of Ireland' : 'Northern Ireland';
+  lblPaste.textContent = ie ? 'Paste tender notice text (from eTenders.gov.ie)' : 'Paste tender notice text (from eTendersNI)';
+  document.querySelectorAll('.region-card').forEach(c => c.classList.toggle('selected', c.dataset.region === r));
+}
+segIE.addEventListener('click', () => setRegion('ie'));
+segNI.addEventListener('click', () => setRegion('ni'));
+document.querySelectorAll('.region-select').forEach(b => {
+  b.addEventListener('click', () => {
+    setRegion(b.dataset.region);
+    document.getElementById('checker').scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* ---------- Hero gauge animate on load ---------- */
+function animateGauge(arcEl, numEl, score, circ){
+  let cur = 0;
+  const offset = circ - (score/100)*circ;
+  arcEl.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1)';
+  requestAnimationFrame(() => { arcEl.style.strokeDashoffset = offset; });
+  const step = () => { cur += Math.ceil((score-cur)/6) || 1; if(cur>=score){cur=score;} numEl.textContent = cur; if(cur<score) requestAnimationFrame(step); };
+  step();
+}
+window.addEventListener('load', () => {
+  animateGauge(document.getElementById('heroArc'), document.getElementById('heroScore'), 68, 339);
+  document.querySelectorAll('.dash .fill').forEach(f => setTimeout(()=>f.style.width = f.dataset.w, 300));
+});
+
+/* ---------- File upload (picker + drag/drop) ---------- */
+let uploadedFileName = '';
+let extractedFileText = '';
+const uploadBox = document.getElementById('uploadBox');
+const fileInput = document.getElementById('fileInput');
+const uploadTitle = document.getElementById('uploadTitle');
+const uploadHint = document.getElementById('uploadHint');
+
+async function extractText(file){
+  const name = (file.name||'').toLowerCase();
+  try{
+    if(name.endsWith('.pdf') && window.pdfjsLib){
+      const buf = await file.arrayBuffer();
+      const pdf = await window.pdfjsLib.getDocument({data:buf}).promise;
+      const maxPages = Math.min(pdf.numPages, 30);
+      let out = '';
+      for(let p=1; p<=maxPages; p++){
+        const page = await pdf.getPage(p);
+        const content = await page.getTextContent();
+        out += content.items.map(function(i){ return i.str; }).join(' ') + '\n';
+      }
+      return out.trim();
+    }
+    if((name.endsWith('.docx')) && window.mammoth){
+      const buf = await file.arrayBuffer();
+      const res = await window.mammoth.extractRawText({arrayBuffer:buf});
+      return (res && res.value ? res.value : '').trim();
+    }
+  }catch(e){ /* extraction failed — handled by caller */ }
+  return '';
+}
+
+async function showFile(file){
+  if(!file) return;
+  const MAX = 25 * 1024 * 1024; // 25MB
+  if(file.size > MAX){
+    uploadBox.classList.remove('has-file');
+    uploadTitle.textContent = 'File too large';
+    uploadHint.textContent = 'Please choose a PDF or Word file under 25MB.';
+    uploadedFileName = ''; extractedFileText = '';
+    return;
+  }
+  uploadedFileName = file.name;
+  extractedFileText = '';
+  uploadBox.classList.add('has-file');
+  uploadTitle.textContent = '✓ ' + file.name;
+  uploadHint.textContent = 'Reading document…';
+  extractedFileText = await extractText(file);
+  if(extractedFileText.length >= 40){
+    uploadHint.textContent = 'Ready — tap "Generate Free Bid/No-Bid Score" below.';
+  } else {
+    uploadHint.textContent = "Couldn't read enough text from this file (it may be scanned). Please paste the notice text above instead.";
+  }
+}
+
+uploadBox.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', () => showFile(fileInput.files[0]));
+['dragover','dragenter'].forEach(ev => uploadBox.addEventListener(ev, e => { e.preventDefault(); uploadBox.classList.add('drag'); }));
+['dragleave','dragend'].forEach(ev => uploadBox.addEventListener(ev, e => { e.preventDefault(); uploadBox.classList.remove('drag'); }));
+uploadBox.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadBox.classList.remove('drag');
+  if(e.dataTransfer.files && e.dataTransfer.files.length){
+    try { fileInput.files = e.dataTransfer.files; } catch(err) {}
+    showFile(e.dataTransfer.files[0]);
+  }
+});
+
+const runBtn = document.getElementById('runChecker');
+const liveResult = document.getElementById('liveResult');
+const DOT_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+function esc(s){ return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function chipClassFor(r){
+  const s=(r||'').toLowerCase();
+  if(/(high risk|weak|poor|fail|missing|gap|low\b)/.test(s)) return 'h';
+  if(/(strong|good|ready|pass|low risk|high\b)/.test(s)) return 'g';
+  return 'm';
+}
+
+function showLead(extra){
+  sendLead(Object.assign({
+    form:'Free Tender Audit Checker',
+    _subject:'New Tender Audit checker lead',
+    email:document.getElementById('fEmail').value,
+    region: region==='ie' ? 'Ireland' : 'Northern Ireland',
+    sector:document.getElementById('fSector').value,
+    contractValue:document.getElementById('fValue').value,
+    turnover:document.getElementById('fTurnover').value,
+    insurance:document.getElementById('fInsurance').value,
+    yearsTrading:document.getElementById('fYears').value,
+    experience:document.getElementById('fExp').value,
+    deadline:document.getElementById('fDeadline').value,
+    fileAttached: uploadedFileName || 'none'
+  }, extra||{}));
+}
+
+function paintVerdict(verdict, score, badgeText, msg){
+  let badgeClass,color;
+  const v=(verdict||'').toLowerCase();
+  if(v.indexOf('no')===0){ badgeClass='nobid'; color='var(--nobid)'; }
+  else if(v.indexOf('bid')===0){ badgeClass='bid'; color='var(--bid)'; }
+  else { badgeClass='maybe'; color='var(--maybe)'; }
+  document.getElementById('lrTitle').textContent = verdict;
+  const badge=document.getElementById('lrBadge'); badge.className='badge '+badgeClass; badge.textContent=badgeText;
+  document.getElementById('lrMsg').textContent = msg;
+  document.getElementById('lrRegion').textContent = region==='ie' ? 'Ireland' : 'Northern Ireland';
+  const arc=document.getElementById('lrArc'); arc.setAttribute('stroke',color);
+  liveResult.classList.add('show');
+  animateGauge(arc, document.getElementById('lrNum'), Math.max(0,Math.min(100, score)), 295);
+  liveResult.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function renderReal(a){
+  const score = Math.max(0, Math.min(100, parseInt(a.score,10) || 0));
+  const badgeText = score>=70?'Strong fit':score>=45?'Worth a closer look':'High risk';
+  paintVerdict(a.verdict||'Result', score, badgeText, a.summary||'');
+
+  const breakdown = a.breakdown || [];
+  let free = breakdown.find(function(b){ return /deadline/i.test(b.area||''); }) || breakdown[0];
+  document.getElementById('lrFreeFinding').textContent = free ? (free.note || free.area || '—') : 'See the full report for the deadline assessment.';
+
+  const docs = (a.documents||[]).filter(function(d){ return d && d.trim(); }).slice(0,8);
+  const risks = (a.risks||[]).filter(function(r){ return r && r.trim(); }).slice(0,5);
+  document.getElementById('lrDocCount').textContent = docs.length;
+  document.getElementById('lrRiskCount').textContent = risks.length;
+
+  const tb=document.getElementById('lrBreakdown'); tb.innerHTML='';
+  breakdown.forEach(function(b){
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td>'+esc(b.area)+'</td>'+
+                 '<td style="font-weight:400;color:var(--slate);text-align:left">'+esc(b.note)+'</td>'+
+                 '<td><span class="chip '+chipClassFor(b.rating)+'">'+esc(b.rating)+'</span></td>';
+    tb.appendChild(tr);
+  });
+
+  const dl=document.getElementById('lrDocs'); dl.innerHTML='';
+  docs.forEach(function(d){ const li=document.createElement('li'); li.innerHTML=CHECK_SVG+'<span>'+esc(d)+'</span>'; dl.appendChild(li); });
+  if(!dl.children.length) dl.innerHTML='<li>'+CHECK_SVG+'<span>None clearly listed in the notice.</span></li>';
+
+  const rl=document.getElementById('lrRisks'); rl.innerHTML='';
+  risks.forEach(function(r){ const li=document.createElement('li'); li.innerHTML=DOT_SVG+'<span>'+esc(r)+'</span>'; rl.appendChild(li); });
+  if(!rl.children.length) rl.innerHTML='<li>'+DOT_SVG+'<span>No major risks flagged.</span></li>';
+
+  document.getElementById('lrEffort').textContent = a.effort || '—';
+  document.getElementById('lrRec').textContent = a.recommendation || '';
+
+  document.getElementById('lrKind').textContent='Your tender audit';
+  document.getElementById('lrSampleNote').style.display='none';
+  document.getElementById('lrSampleCta').style.display='none';
+  document.getElementById('lrTeaser').style.display='block';
+  const locked=document.getElementById('lrLocked');
+  locked.style.display='block';
+  locked.classList.add('is-locked');
+}
+
+function renderSample(){
+  document.getElementById('lrKind').textContent='Your sample audit';
+  document.getElementById('lrTeaser').style.display='none';
+  const locked=document.getElementById('lrLocked');
+  locked.style.display='none';
+  locked.classList.remove('is-locked');
+  document.getElementById('lrSampleNote').style.display='block';
+  document.getElementById('lrSampleCta').style.display='inline-flex';
+  let score=60;
+  const exp=document.getElementById('fExp').value;
+  const ins=document.getElementById('fInsurance').value;
+  const yrs=document.getElementById('fYears').value;
+  const deadline=document.getElementById('fDeadline').value;
+  if(exp.startsWith('Yes')) score+=16; else if(exp.startsWith('Some')) score+=6; else score-=8;
+  if(ins.startsWith('Public + Employer')) score+=10; else if(ins.includes('None')) score-=14; else score+=4;
+  if(yrs.startsWith('5+')) score+=8; else if(yrs.startsWith('Under 1')) score-=10;
+  if(deadline){ const days=Math.ceil((new Date(deadline)-new Date())/86400000); if(days<3) score-=12; else if(days<7) score-=5; else if(days>21) score+=5; }
+  score=Math.max(18,Math.min(94,score));
+  let verdict,badgeText,msg;
+  if(score>=70){ verdict='Bid'; badgeText='Strong fit'; msg='Good readiness across the key areas — this looks worth pursuing.'; }
+  else if(score>=45){ verdict='Maybe Bid'; badgeText='Worth a closer look'; msg='Promising fit, but a few gaps need closing before the deadline.'; }
+  else { verdict='No-Bid'; badgeText='High risk'; msg='Several readiness gaps suggest this tender may not be worth the effort right now.'; }
+  paintVerdict(verdict, score, badgeText, msg);
+  return {score:score, verdict:verdict};
+}
+
+runBtn.addEventListener('click', async function(){
+  const pasted=(document.getElementById('fText').value||'').trim();
+  const fileText=(extractedFileText||'').trim();
+  const tender = pasted.length>=40 ? pasted : (fileText.length>=40 ? fileText : '');
+  const msgEl=document.getElementById('checkMsg');
+  function say(text,color){ msgEl.style.display='block'; msgEl.style.color=color; msgEl.textContent=text; }
+  msgEl.style.display='none';
+
+  if(!tender){
+    if(uploadedFileName && fileText.length<40){
+      say("We couldn't read enough text from your file — please paste the tender notice text in the box above.", 'var(--nobid, #b4232a)');
+    } else {
+      say('Please paste the tender notice text, or upload the tender document, before generating your score.', 'var(--nobid, #b4232a)');
+    }
+    document.getElementById('fText').scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  const original=runBtn.textContent;
+  runBtn.disabled=true; runBtn.textContent='Analysing tender…';
+  let usedReal=false;
+
+  try{
+    const resp=await fetch('/api/audit',{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({
+        tender: tender,
+        region: region,
+        sector: document.getElementById('fSector').value,
+        turnover: document.getElementById('fTurnover').value,
+        insurance: document.getElementById('fInsurance').value,
+        years: document.getElementById('fYears').value,
+        experience: document.getElementById('fExp').value,
+        deadline: document.getElementById('fDeadline').value
+      })
+    });
+    if(resp.ok){
+      const audit=await resp.json();
+      if(audit && audit.verdict){
+        renderReal(audit);
+        usedReal=true;
+        showLead({ engine:'AI', verdict:audit.verdict, score:audit.score });
+      }
+    }
+  }catch(e){ /* handled below */ }
+
+  if(!usedReal){
+    say('Something went wrong analysing your tender. Please try again in a moment.', 'var(--nobid, #b4232a)');
+  }
+
+  runBtn.disabled=false; runBtn.textContent=original;
+});
+
+/* ---------- Alerts form ---------- */
+document.getElementById('joinAlerts').addEventListener('click', () => {
+  const email = document.getElementById('aEmail').value;
+  const msg = document.getElementById('alertMsg');
+  msg.style.display = 'block';
+  if(email && email.includes('@')){
+    msg.style.color = 'var(--bid)';
+    msg.textContent = "✓ You're on the list — we'll be in touch.";
+    sendLead({
+      form: 'Tender Alerts signup',
+      _subject: 'New Tender Alerts signup',
+      name: document.getElementById('aName').value,
+      email: email,
+      sector: document.getElementById('aSector').value,
+      region: document.getElementById('aRegion').value
+    });
+  } else {
+    msg.style.color = 'var(--nobid)';
+    msg.textContent = 'Please enter a valid email address.';
+  }
+});
+
+/* ---------- FAQ accordion ---------- */
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.setAttribute('aria-expanded', 'false');
+  q.addEventListener('click', () => {
+    const faq = q.parentElement;
+    const a = q.nextElementSibling;
+    const open = faq.classList.contains('open');
+    document.querySelectorAll('.faq').forEach(f => { f.classList.remove('open'); f.querySelector('.faq-a').style.maxHeight = null; f.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
+    if(!open){ faq.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; q.setAttribute('aria-expanded','true'); }
+  });
+});
+
+/* ---------- Pricing billing toggle ---------- */
+const billMonthly = document.getElementById('billMonthly');
+const billAnnual = document.getElementById('billAnnual');
+const proPrice = document.getElementById('proPrice');
+const proNote = document.getElementById('proNote');
+function setBilling(annual){
+  billMonthly.classList.toggle('active', !annual);
+  billAnnual.classList.toggle('active', annual);
+  if(annual){
+    proPrice.innerHTML = '£24 / €29 <small>/ mo</small>';
+    proNote.textContent = 'Billed £290 / €349 a year · 2 months free';
+  } else {
+    proPrice.innerHTML = '£29 / €35 <small>/ mo</small>';
+    proNote.textContent = 'Billed monthly · cancel anytime';
+  }
+}
+billMonthly.addEventListener('click', () => setBilling(false));
+billAnnual.addEventListener('click', () => setBilling(true));
+
+/* ---------- Learn modules ---------- */
+const lessonBtns = document.querySelectorAll('.lesson-btn');
+const lessons = document.querySelectorAll('.lesson');
+lessonBtns.forEach(btn => btn.addEventListener('click', () => {
+  const id = btn.dataset.lesson;
+  lessonBtns.forEach(b => b.classList.toggle('active', b === btn));
+  lessons.forEach(l => l.classList.toggle('active', l.id === 'lesson-' + id));
+}));
+
+/* ---------- Scroll reveal ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i) => { el.style.transitionDelay = (i % 4 * 0.06) + 's'; io.observe(el); });
+</script>
+</body>
+</html>
